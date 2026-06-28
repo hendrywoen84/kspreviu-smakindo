@@ -5,320 +5,117 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviu KSP SMAKINDO - Survey Instrument</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #dbeafe;
-            --secondary: #059669;
-            --warning: #d97706;
-            --danger: #dc2626;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-500: #6b7280;
-            --gray-700: #374151;
-            --gray-900: #111827;
-            --radius: 12px;
-            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --primary: #2563eb; --primary-dark: #1d4ed8; --primary-light: #dbeafe;
+            --secondary: #059669; --warning: #d97706; --danger: #dc2626;
+            --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb;
+            --gray-500: #6b7280; --gray-700: #374151; --gray-900: #111827;
+            --radius: 12px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
         }
-
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', system-ui, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: var(--gray-900);
-            line-height: 1.6;
+            min-height: 100vh; color: var(--gray-900); line-height: 1.6;
         }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
         .card {
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            padding: 32px;
-            margin-bottom: 24px;
+            background: white; border-radius: var(--radius);
+            box-shadow: var(--shadow-lg); padding: 32px; margin-bottom: 24px;
             animation: fadeIn 0.3s ease;
         }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
-        }
-
-        .header h1 {
-            font-size: 2em;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .header p {
-            font-size: 1.1em;
-            opacity: 0.9;
-        }
-
+        .header { text-align: center; padding: 40px 20px; color: white; }
+        .header h1 { font-size: 2em; margin-bottom: 8px; text-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+        .header p { font-size: 1.1em; opacity: 0.9; }
         .logo-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.2);
-            padding: 8px 20px;
-            border-radius: 50px;
-            margin-bottom: 16px;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
+            display: inline-block; background: rgba(255,255,255,0.2);
+            padding: 8px 20px; border-radius: 50px; margin-bottom: 16px;
+            font-weight: 600; backdrop-filter: blur(10px);
         }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
+        .form-group { margin-bottom: 20px; }
         .form-group label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: var(--gray-700);
+            display: block; font-weight: 600; margin-bottom: 8px; color: var(--gray-700);
         }
-
         .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid var(--gray-200);
-            border-radius: 8px;
-            font-size: 16px;
-            transition: border-color 0.2s;
+            width: 100%; padding: 12px 16px; border: 2px solid var(--gray-200);
+            border-radius: 8px; font-size: 16px; transition: border-color 0.2s;
         }
-
         .form-group input:focus, .form-group select:focus {
-            outline: none;
-            border-color: var(--primary);
+            outline: none; border-color: var(--primary);
             box-shadow: 0 0 0 3px var(--primary-light);
         }
-
         .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-decoration: none;
-            gap: 8px;
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 12px 24px; border: none; border-radius: 8px;
+            font-size: 16px; font-weight: 600; cursor: pointer;
+            transition: all 0.2s; gap: 8px;
         }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-1px);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-secondary {
-            background: var(--gray-100);
-            color: var(--gray-700);
-        }
-
-        .btn-secondary:hover {
-            background: var(--gray-200);
-        }
-
-        .btn-success {
-            background: var(--secondary);
-            color: white;
-        }
-
-        .btn-success:hover {
-            background: #047857;
-        }
-
-        .btn-danger {
-            background: var(--danger);
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background: #b91c1c;
-        }
-
-        .btn-full {
-            width: 100%;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: var(--shadow); }
+        .btn-secondary { background: var(--gray-100); color: var(--gray-700); }
+        .btn-secondary:hover { background: var(--gray-200); }
+        .btn-success { background: var(--secondary); color: white; }
+        .btn-success:hover { background: #047857; }
+        .btn-danger { background: var(--danger); color: white; }
+        .btn-full { width: 100%; }
+        .btn-group { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px; }
         .survey-section {
-            border: 2px solid var(--gray-200);
-            border-radius: var(--radius);
-            padding: 24px;
-            margin-bottom: 24px;
-            transition: border-color 0.2s;
+            border: 2px solid var(--gray-200); border-radius: var(--radius);
+            padding: 24px; margin-bottom: 24px; transition: border-color 0.2s;
         }
-
-        .survey-section:hover {
-            border-color: var(--primary-light);
-        }
-
+        .survey-section:hover { border-color: var(--primary-light); }
         .section-title {
-            font-size: 1.3em;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 8px;
-            padding-bottom: 12px;
+            font-size: 1.3em; font-weight: 700; color: var(--primary-dark);
+            margin-bottom: 8px; padding-bottom: 12px;
             border-bottom: 2px solid var(--primary-light);
         }
-
-        .section-subtitle {
-            font-size: 0.95em;
-            color: var(--gray-500);
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-
         .question-block {
-            background: var(--gray-50);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 16px;
+            background: var(--gray-50); border-radius: 8px;
+            padding: 20px; margin-bottom: 16px;
         }
-
-        .question-text {
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--gray-700);
-            line-height: 1.5;
-        }
-
+        .question-text { font-weight: 600; margin-bottom: 12px; color: var(--gray-700); line-height: 1.5; }
         .question-context {
-            font-size: 0.9em;
-            color: var(--gray-500);
-            margin-bottom: 12px;
-            padding: 8px 12px;
-            background: var(--primary-light);
-            border-radius: 6px;
-            border-left: 3px solid var(--primary);
+            font-size: 0.9em; color: var(--gray-500); margin-bottom: 12px;
+            padding: 8px 12px; background: var(--primary-light);
+            border-radius: 6px; border-left: 3px solid var(--primary);
         }
-
-        .options-list {
-            list-style: none;
-        }
-
+        .options-list { list-style: none; }
         .option-item {
-            display: flex;
-            align-items: flex-start;
-            padding: 10px 12px;
-            margin-bottom: 6px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-            gap: 10px;
+            display: flex; align-items: flex-start; padding: 10px 12px;
+            margin-bottom: 6px; border-radius: 8px; cursor: pointer;
+            transition: background 0.2s; gap: 10px;
         }
-
-        .option-item:hover {
-            background: var(--primary-light);
-        }
-
+        .option-item:hover { background: var(--primary-light); }
         .option-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-top: 2px;
-            cursor: pointer;
-            accent-color: var(--primary);
-            flex-shrink: 0;
+            width: 20px; height: 20px; margin-top: 2px; cursor: pointer;
+            accent-color: var(--primary); flex-shrink: 0;
         }
-
-        .option-item label {
-            cursor: pointer;
-            flex: 1;
-            line-height: 1.5;
-        }
-
-        .option-label {
-            font-weight: 600;
-            color: var(--primary);
-            margin-right: 6px;
-        }
-
+        .option-item label { cursor: pointer; flex: 1; line-height: 1.5; }
+        .option-label { font-weight: 600; color: var(--primary); margin-right: 6px; }
         .progress-container {
-            background: var(--gray-200);
-            border-radius: 50px;
-            height: 12px;
-            margin: 20px 0;
-            overflow: hidden;
+            background: var(--gray-200); border-radius: 50px;
+            height: 12px; margin: 20px 0; overflow: hidden;
         }
-
         .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            border-radius: 50px;
-            transition: width 0.5s ease;
+            height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 50px; transition: width 0.5s ease;
         }
-
-        .progress-text {
-            text-align: center;
-            font-size: 0.9em;
-            color: var(--gray-500);
-            margin-bottom: 8px;
-        }
-
-        .admin-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 16px;
-        }
-
+        .progress-text { text-align: center; font-size: 0.9em; color: var(--gray-500); margin-bottom: 8px; }
+        .admin-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
         .admin-table th, .admin-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--gray-200);
+            padding: 12px; text-align: left; border-bottom: 1px solid var(--gray-200);
         }
-
-        .admin-table th {
-            background: var(--gray-50);
-            font-weight: 600;
-            color: var(--gray-700);
-        }
-
-        .admin-table tr:hover {
-            background: var(--gray-50);
-        }
-
+        .admin-table th { background: var(--gray-50); font-weight: 600; color: var(--gray-700); }
+        .admin-table tr:hover { background: var(--gray-50); }
         .badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 50px;
-            font-size: 0.8em;
-            font-weight: 600;
+            display: inline-block; padding: 4px 10px; border-radius: 50px;
+            font-size: 0.8em; font-weight: 600;
         }
-
         .badge-segment-a { background: #fef3c7; color: #92400e; }
         .badge-segment-b { background: #dbeafe; color: #1e40af; }
         .badge-segment-c { background: #d1fae5; color: #065f46; }
@@ -329,206 +126,67 @@
         .badge-complete { background: #d1fae5; color: #065f46; }
         .badge-progress { background: #fef3c7; color: #92400e; }
         .badge-new { background: var(--gray-100); color: var(--gray-700); }
-
         .tabs {
-            display: flex;
-            gap: 4px;
-            margin-bottom: 24px;
-            background: var(--gray-100);
-            padding: 4px;
-            border-radius: 10px;
+            display: flex; gap: 4px; margin-bottom: 24px;
+            background: var(--gray-100); padding: 4px; border-radius: 10px;
         }
-
         .tab {
-            flex: 1;
-            padding: 10px 16px;
-            text-align: center;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.2s;
-            font-size: 0.9em;
+            flex: 1; padding: 10px 16px; text-align: center; border-radius: 8px;
+            cursor: pointer; font-weight: 500; transition: all 0.2s; font-size: 0.9em;
         }
-
-        .tab.active {
-            background: white;
-            color: var(--primary);
-            box-shadow: var(--shadow);
-        }
-
-        .tab:hover:not(.active) {
-            background: var(--gray-200);
-        }
-
+        .tab.active { background: white; color: var(--primary); box-shadow: var(--shadow); }
+        .tab:hover:not(.active) { background: var(--gray-200); }
         .nav-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            background: white;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            margin-bottom: 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 24px; background: white; border-radius: var(--radius);
+            box-shadow: var(--shadow); margin-bottom: 24px;
         }
-
-        .nav-bar .user-info {
-            font-weight: 600;
-            color: var(--gray-700);
-        }
-
-        .nav-bar .user-info small {
-            display: block;
-            font-weight: 400;
-            color: var(--gray-500);
-            font-size: 0.85em;
-        }
-
-        .alert {
-            padding: 16px 20px;
-            border-radius: 8px;
-            margin-bottom: 16px;
-            font-weight: 500;
-        }
-
-        .alert-info {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            border: 1px solid #93c5fd;
-        }
-
-        .alert-success {
-            background: #d1fae5;
-            color: #065f46;
-            border: 1px solid #6ee7b7;
-        }
-
-        .alert-warning {
-            background: #fef3c7;
-            color: #92400e;
-            border: 1px solid #fcd34d;
-        }
-
-        .alert-danger {
-            background: #fee2e2;
-            color: #991b1b;
-            border: 1px solid #fca5a5;
-        }
-
+        .nav-bar .user-info { font-weight: 600; color: var(--gray-700); }
+        .nav-bar .user-info small { display: block; font-weight: 400; color: var(--gray-500); font-size: 0.85em; }
+        .alert { padding: 16px 20px; border-radius: 8px; margin-bottom: 16px; font-weight: 500; }
+        .alert-info { background: var(--primary-light); color: var(--primary-dark); border: 1px solid #93c5fd; }
+        .alert-success { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+        .alert-warning { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+        .alert-danger { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
         .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center;
+            align-items: center; padding: 20px;
         }
-
-        .modal-overlay.active {
-            display: flex;
-        }
-
+        .modal-overlay.active { display: flex; }
         .modal {
-            background: white;
-            border-radius: var(--radius);
-            padding: 32px;
-            max-width: 500px;
-            width: 100%;
-            max-height: 80vh;
-            overflow-y: auto;
+            background: white; border-radius: var(--radius); padding: 32px;
+            max-width: 500px; width: 100%; max-height: 80vh; overflow-y: auto;
             animation: fadeIn 0.3s ease;
         }
-
-        .modal h3 {
-            margin-bottom: 16px;
-            color: var(--gray-900);
-        }
-
+        .modal h3 { margin-bottom: 16px; color: var(--gray-900); }
         @media (max-width: 768px) {
-            .container {
-                padding: 12px;
-            }
-
-            .card {
-                padding: 20px;
-            }
-
-            .header h1 {
-                font-size: 1.5em;
-            }
-
-            .tabs {
-                flex-wrap: wrap;
-            }
-
-            .tab {
-                flex: none;
-                width: calc(50% - 2px);
-            }
-
-            .btn-group {
-                flex-direction: column;
-            }
-
-            .nav-bar {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
+            .container { padding: 12px; }
+            .card { padding: 20px; }
+            .header h1 { font-size: 1.5em; }
+            .tabs { flex-wrap: wrap; }
+            .tab { flex: none; width: calc(50% - 2px); }
+            .btn-group { flex-direction: column; }
+            .nav-bar { flex-direction: column; gap: 12px; text-align: center; }
         }
-
-        .hidden {
-            display: none !important;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
+        .hidden { display: none !important; }
+        .text-center { text-align: center; }
         .mt-2 { margin-top: 8px; }
         .mt-4 { margin-top: 16px; }
         .mb-2 { margin-bottom: 8px; }
         .mb-4 { margin-bottom: 16px; }
-
         .info-box {
-            background: var(--gray-50);
-            border: 1px solid var(--gray-200);
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 20px;
+            background: var(--gray-50); border: 1px solid var(--gray-200);
+            border-radius: 8px; padding: 16px; margin-bottom: 20px;
         }
-
-        .info-box h4 {
-            color: var(--gray-700);
-            margin-bottom: 8px;
-        }
-
-        .info-box p {
-            color: var(--gray-500);
-            font-size: 0.95em;
-        }
-
+        .info-box h4 { color: var(--gray-700); margin-bottom: 8px; }
+        .info-box p { color: var(--gray-500); font-size: 0.95em; }
         .saving-indicator {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--secondary);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: var(--shadow-lg);
-            display: none;
-            animation: fadeIn 0.3s ease;
-            z-index: 999;
+            position: fixed; bottom: 20px; right: 20px; background: var(--secondary);
+            color: white; padding: 12px 20px; border-radius: 8px;
+            box-shadow: var(--shadow-lg); display: none; animation: fadeIn 0.3s ease; z-index: 999;
         }
-
-        .saving-indicator.show {
-            display: block;
-        }
+        .saving-indicator.show { display: block; }
     </style>
 </head>
 <body>
@@ -543,7 +201,6 @@
             <!-- LOGIN PAGE -->
             <div id="page-login" class="card">
                 <h2 class="text-center mb-4">🔐 Masuk ke Sistem Survey</h2>
-                
                 <div class="tabs">
                     <div class="tab active" onclick="switchLoginTab('respondent')">Responden</div>
                     <div class="tab" onclick="switchLoginTab('admin')">Admin</div>
@@ -552,7 +209,7 @@
                 <div id="login-respondent">
                     <div class="info-box">
                         <h4>📌 Petunjuk Pengisian</h4>
-                        <p>Masukkan nama lengkap Anda untuk memulai atau melanjutkan pengisian survey. Jika nama Anda sudah terdaftar, survey akan dilanjutkan dari bagian terakhir yang belum diselesaikan.</p>
+                        <p>Masukkan nama lengkap Anda untuk memulai atau melanjutkan pengisian survey. <strong>Survey hanya dapat diisi SATU KALI.</strong></p>
                     </div>
                     <div class="form-group">
                         <label>Nama Lengkap</label>
@@ -615,7 +272,7 @@
             <div id="page-admin" class="hidden">
                 <div class="nav-bar">
                     <div class="user-info">
-                        👨‍💼 Panel Admin
+                        👨‍ Panel Admin
                         <small>Kelola responden & lihat hasil survey</small>
                     </div>
                     <div class="btn-group" style="margin:0">
@@ -714,31 +371,89 @@
                                 <p>Copy kode berikut ke Google Apps Script Anda:</p>
                             </div>
                             <pre style="background:var(--gray-900); color:#a5f3fc; padding:16px; border-radius:8px; overflow-x:auto; font-size:0.85em; line-height:1.5;"><code>function doPost(e) {
-  var data = JSON.parse(e.postData.contents);
-  var ss = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = ss.getSheetByName(data.segment) || ss.insertSheet(data.segment);
+  var lock = LockService.getScriptLock();
+  lock.tryLock(10000);
   
-  if (sheet.getLastRow() === 0) {
-    var headers = ['Timestamp', 'Nama', 'Segmen'];
-    Object.keys(data.answers).forEach(function(key) {
-      headers.push(key);
+  try {
+    var data = JSON.parse(e.postData.contents);
+    var ss = SpreadsheetApp.getActiveSpreadsheet();
+    var sheetName = data.segment || 'A';
+    var sheet = ss.getSheetByName(sheetName);
+    
+    // CEK APakah SUDAH PERNAH SUBMIT
+    var alreadySubmitted = checkIfAlreadySubmitted(ss, data.name, sheetName);
+    if (alreadySubmitted) {
+      return ContentService.createTextOutput(
+        JSON.stringify({
+          status: 'duplicate',
+          message: 'Anda sudah mengisi survey ini sebelumnya.'
+        })
+      ).setMimeType(ContentService.MimeType.JSON);
+    }
+    
+    if (!sheet) {
+      sheet = ss.insertSheet(sheetName);
+      var headers = ['Timestamp', 'Nama Responden', 'Segmen', 'Status'];
+      Object.keys(data.answers || {}).forEach(function(key) {
+        headers.push(key);
+      });
+      sheet.appendRow(headers);
+    }
+    
+    var timestamp = new Date();
+    var row = [timestamp, data.name || 'Unknown', sheetName, 'COMPLETED'];
+    
+    Object.keys(data.answers || {}).forEach(function(key) {
+      var jawaban = data.answers[key];
+      if (Array.isArray(jawaban)) {
+        row.push(jawaban.join(', '));
+      } else {
+        row.push(jawaban || '');
+      }
     });
-    sheet.appendRow(headers);
+    
+    sheet.appendRow(row);
+    
+    var logSheet = ss.getSheetByName('Log');
+    if (!logSheet) {
+      logSheet = ss.insertSheet('Log');
+      logSheet.appendRow(['Timestamp', 'Event', 'Nama', 'Segmen', 'Status']);
+    }
+    logSheet.appendRow([timestamp, 'SUBMIT_SUCCESS', data.name, sheetName, 'First Submission']);
+    
+    return ContentService.createTextOutput(
+      JSON.stringify({status: 'success', message: 'Data berhasil disimpan'})
+    ).setMimeType(ContentService.MimeType.JSON);
+    
+  } catch (error) {
+    return ContentService.createTextOutput(
+      JSON.stringify({status: 'error', message: error.toString()})
+    ).setMimeType(ContentService.MimeType.JSON);
+    
+  } finally {
+    lock.releaseLock();
   }
+}
+
+function checkIfAlreadySubmitted(ss, nama, segmen) {
+  var sheet = ss.getSheetByName(segmen);
+  if (!sheet) return false;
   
-  var row = [new Date(), data.name, data.segment];
-  Object.keys(data.answers).forEach(function(key) {
-    row.push(JSON.stringify(data.answers[key]));
-  });
-  sheet.appendRow(row);
-  
-  return ContentService.createTextOutput(JSON.stringify({status: 'success'}))
-    .setMimeType(ContentService.MimeType.JSON);
+  var data = sheet.getDataRange().getValues();
+  for (var i = 1; i < data.length; i++) {
+    var rowNama = data[i][1];
+    var rowStatus = data[i][3];
+    if (rowNama === nama && rowStatus === 'COMPLETED') {
+      return true;
+    }
+  }
+  return false;
 }
 
 function doGet(e) {
-  return ContentService.createTextOutput(JSON.stringify({status: 'ready'}))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(
+    JSON.stringify({status: 'ready', message: 'API Survey KSP SMAKINDO aktif'})
+  ).setMimeType(ContentService.MimeType.JSON);
 }</code></pre>
                         </div>
                     </div>
@@ -747,9 +462,7 @@ function doGet(e) {
         </div>
     </div>
 
-    <div class="saving-indicator" id="saving-indicator">
-        ✅ Progress tersimpan otomatis
-    </div>
+    <div class="saving-indicator" id="saving-indicator">✅ Progress tersimpan otomatis</div>
 
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal" id="modal-content"></div>
@@ -783,14 +496,14 @@ function doGet(e) {
     }
 
     // ============================================
-    // SURVEY DATA - ALL 7 SEGMENTS VERBATIM
+    // SURVEY DATA - ALL 7 SEGMENTS
     // ============================================
 
     const surveyData = {
         A: {
             title: "SEGMEN A — KEPALA SATUAN PENDIDIKAN",
             subtitle: "SMA Kristen Indonesia Magelang (SMAKINDO) — TP 2025/2026",
-            instruction: "Pilih semua pernyataan yang benar-benar mencerminkan kondisi nyata di SMAKINDO saat ini. Anda boleh memilih lebih dari satu opsi dalam setiap pertanyaan. Tidak ada jawaban \"benar\" atau \"salah\" — yang dicari adalah gambaran kondisi yang paling akurat.",
+            instruction: "Pilih semua pernyataan yang benar-benar mencerminkan kondisi nyata di SMAKINDO saat ini.",
             sections: [
                 {
                     id: "A1",
@@ -802,164 +515,12 @@ function doGet(e) {
                             context: "KSP menyatakan visi SMAKINDO: \"Terwujudnya Sekolah Kristen Yang Peduli, Kreatif, Bertanggung Jawab Dalam Iman, Ilmu Dan Pelayanan.\"",
                             instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
                             options: [
-                                { label: "A", text: "Visi dipahami secara berbeda oleh guru yang berbeda — tidak ada pemahaman yang seragam tentang maknanya dalam konteks pembelajaran." },
-                                { label: "B", text: "Visi terasa hadir dalam kegiatan kerohanian dan asrama, tetapi kurang terlihat dalam desain pembelajaran intrakurikuler di kelas." },
-                                { label: "C", text: "Ada praktik pembelajaran konkret yang dapat ditunjuk sebagai bukti keterwujudan setidaknya satu elemen visi (misalnya: \"Peduli\" tampak dalam proyek kokurikuler tertentu)." },
-                                { label: "D", text: "Kepala sekolah secara rutin menggunakan bahasa visi dalam rapat, supervisi, dan komunikasi dengan guru." },
-                                { label: "E", text: "Visi lebih berfungsi sebagai pernyataan identitas kelembagaan daripada panduan operasional pembelajaran sehari-hari." },
-                                { label: "F", text: "Visi sudah pernah dikaji ulang bersama seluruh warga sekolah dalam dua tahun terakhir untuk memastikan relevansinya." }
-                            ]
-                        },
-                        {
-                            id: "A1.2",
-                            title: "A1.2 — Pengukuran Karakter Murid: Tanggung Jawab, Peduli, Kreatif",
-                            context: "KSP menetapkan tiga nilai karakter: Tanggung Jawab, Peduli, dan Kreatif.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Ketiga karakter dinilai melalui observasi perilaku yang bersifat subyektif antar guru — tidak ada rubrik penilaian yang terstandar." },
-                                { label: "B", text: "Ada instrumen observasi karakter tertulis yang sudah digunakan secara konsisten oleh seluruh guru." },
-                                { label: "C", text: "Penilaian karakter hanya muncul dalam laporan rapor sebagai deskripsi kualitatif tanpa data pendukung yang sistematis." },
-                                { label: "D", text: "Ketiga karakter dipetakan ke indikator perilaku yang spesifik dan terukur per jenjang kelas." },
-                                { label: "E", text: "Guru merasa kesulitan membedakan antara mengobservasi karakter secara autentik dan hanya mencatat kepatuhan terhadap aturan sekolah." },
-                                { label: "F", text: "Ada mekanisme triangulasi penilaian karakter (dari guru, teman sebaya, dan diri sendiri) yang dijalankan secara terstruktur." }
-                            ]
-                        },
-                        {
-                            id: "A1.3",
-                            title: "A1.3 — Konsistensi Mekanisme Tinjauan KSP",
-                            context: "KSP menyebutkan komponen tertentu ditinjau 1 tahun sekali, dan komponen lain setiap 4–5 tahun.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Tinjauan tahunan dilakukan, tetapi hasilnya tidak selalu mengubah konten KSP secara substantif — lebih bersifat pembaruan administratif." },
-                                { label: "B", text: "Terdapat dokumentasi hasil tinjauan KSP tahun sebelumnya yang dapat ditunjukkan kepada tim reviu." },
-                                { label: "C", text: "Tinjauan dilakukan, tetapi tidak selalu tepat waktu sesuai jadwal yang ditetapkan dalam KSP." },
-                                { label: "D", text: "Belum ada mekanisme tinjauan formal yang terdokumentasi — penyesuaian KSP dilakukan secara ad hoc." },
-                                { label: "E", text: "Pihak yang terlibat dalam tinjauan KSP setiap tahun berbeda-beda, sehingga konsistensi analisis tidak terjaga." },
-                                { label: "F", text: "Hasil tinjauan tahunan KSP disosialisasikan kepada seluruh warga sekolah sebelum tahun ajaran dimulai." }
-                            ]
-                        },
-                        {
-                            id: "A1.4",
-                            title: "A1.4 — Analisis Capaian Rapor Pendidikan dan Strategi Tindak Lanjut",
-                            context: "Rapor Pendidikan 2023: Literasi \"Kurang,\" Numerasi \"Kurang.\" Rapor 2024: Literasi naik ke \"Baik,\" Numerasi naik ke \"Sedang\" (Aljabar masih lemah).",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Kenaikan Literasi lebih banyak dipengaruhi oleh perubahan metodologi pengukuran AKM atau kondisi sampling, bukan hanya karena intervensi program sekolah." },
-                                { label: "B", text: "Ada program spesifik (misalnya: pembiasaan membaca, modul literasi lintas mapel) yang dapat diidentifikasi sebagai kontributor utama kenaikan Literasi." },
-                                { label: "C", text: "Akar masalah Numerasi — khususnya domain Aljabar — belum dianalisis secara mendalam oleh tim guru; belum ada peta masalah yang tertulis." },
-                                { label: "D", text: "Guru Matematika sudah menerima umpan balik berbasis data Rapor Pendidikan dan telah menyesuaikan pendekatan pengajaran Aljabar." },
-                                { label: "E", text: "Kepala sekolah menggunakan data Rapor Pendidikan secara rutin dalam rapat atau supervisi untuk mendorong perbaikan pembelajaran." },
-                                { label: "F", text: "Sekolah belum memiliki strategi intervensi Numerasi yang terstruktur untuk TP 2025/2026 yang dapat ditunjukkan secara tertulis." }
-                            ]
-                        },
-                        {
-                            id: "A1.5",
-                            title: "A1.5 — Pelaksanaan Supervisi Pembelajaran",
-                            context: "KSP mencantumkan supervisi kelas 4 kali per tahun (Agustus, Oktober, Februari, April).",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Jadwal 4 kali supervisi per tahun secara konsisten terlaksana dalam dua tahun ajaran terakhir." },
-                                { label: "B", text: "Supervisi pernah tidak terlaksana pada jadwal yang ditetapkan karena alasan operasional (jadwal benturan, kegiatan sekolah, dll.)." },
-                                { label: "C", text: "Hasil temuan supervisi didokumentasikan secara tertulis dan dapat ditunjukkan kepada tim reviu." },
-                                { label: "D", text: "Tindak lanjut dari temuan supervisi diverifikasi kembali pada supervisi berikutnya secara sistematis." },
-                                { label: "E", text: "Guru cenderung mempersiapkan pembelajaran secara berbeda saat supervisi — kondisi kelas supervisi tidak mencerminkan praktik mengajar sehari-hari." },
-                                { label: "F", text: "Supervisi hanya dilakukan oleh kepala sekolah, belum melibatkan rekan sejawat (peer observation) atau wakil kepala kurikulum." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "A2",
-                    title: "A2. PENGEMBANGAN PROFESIONAL PENDIDIK DAN TENAGA KEPENDIDIKAN",
-                    questions: [
-                        {
-                            id: "A2.1",
-                            title: "A2.1 — Strategi Sertifikasi Guru",
-                            context: "Dari 17 guru, hanya 5 (29%) yang bersertifikat pendidik. 71% belum bersertifikat.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Ada roadmap sertifikasi guru yang tertulis dengan target tahunan yang realistis dan diketahui oleh seluruh guru." },
-                                { label: "B", text: "Hambatan sertifikasi bukan pada kemauan guru, melainkan pada regulasi (jalur PPG, kuota, persyaratan administrasi) yang tidak sepenuhnya dalam kendali sekolah." },
-                                { label: "C", text: "Yayasan (YPKI) belum mengalokasikan anggaran khusus untuk mendukung proses PPG bagi guru yang belum bersertifikat." },
-                                { label: "D", text: "Kondisi 71% guru tanpa sertifikat sudah berlangsung lebih dari dua tahun tanpa perubahan signifikan dalam jumlah guru yang disertifikasi." },
-                                { label: "E", text: "Sekolah aktif menginformasikan dan mendampingi guru dalam mempersiapkan proses sertifikasi (misalnya: PMM, PPG Prajabatan, PPG Dalam Jabatan)." },
-                                { label: "F", text: "Ketidakhadiran sertifikat pendidik berdampak nyata pada tunjangan kesejahteraan guru, yang pada gilirannya memengaruhi stabilitas tenaga pengajar di SMAKINDO." }
-                            ]
-                        },
-                        {
-                            id: "A2.2",
-                            title: "A2.2 — Dampak Guru Mengampu Lebih dari Satu Mata Pelajaran",
-                            context: "KSP mengakui banyak guru mengampu lebih dari satu mata pelajaran di semua jenjang (X, XI, XII) sekaligus.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Beban mengampu multi-mapel membuat waktu persiapan pembelajaran menjadi terbatas — guru tidak selalu mampu menyiapkan modul ajar yang kontekstual." },
-                                { label: "B", text: "Ada guru yang mengampu mata pelajaran di luar latar belakang pendidikannya karena keterbatasan SDM." },
-                                { label: "C", text: "Kondisi ini sudah diterima sebagai \"hal normal\" oleh sebagian besar guru tanpa ada langkah konkret dari sekolah untuk mengurangi beban tersebut." },
-                                { label: "D", text: "Sekolah sedang dalam proses rekrutmen untuk menambah tenaga pendidik guna mengurangi beban multi-mapel." },
-                                { label: "E", text: "Kondisi multi-mapel berdampak pada kualitas asesmen — guru kesulitan merancang asesmen yang benar-benar mengukur Tujuan Pembelajaran secara mendalam." },
-                                { label: "F", text: "Guru yang mengampu multi-mapel mendapat dukungan khusus (waktu kolaborasi, template perangkat ajar, dll.) dari pihak kurikulum." }
-                            ]
-                        },
-                        {
-                            id: "A2.3",
-                            title: "A2.3 — Efektivitas Pendampingan: Coaching, Mentoring, Pelatihan",
-                            context: "KSP menyebut tiga bentuk pendampingan guru: coaching, mentoring, dan pelatihan.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Coaching dilakukan secara terjadwal dan terdokumentasi — ada rekam jejak percakapan coaching yang dapat ditunjukkan." },
-                                { label: "B", text: "Yang paling sering berjalan adalah pelatihan (workshop), sementara coaching dan mentoring bersifat informal dan tidak terstruktur." },
-                                { label: "C", text: "Ada bukti perubahan praktik mengajar guru yang dapat dilacak langsung sebagai hasil dari pendampingan yang diterima." },
-                                { label: "D", text: "Pendampingan lebih bersifat top-down (dari kepala sekolah ke guru) daripada kolaboratif antar rekan sejawat." },
-                                { label: "E", text: "Guru merasa pendampingan yang ada belum cukup untuk mengatasi tantangan spesifik yang mereka hadapi di kelas." },
-                                { label: "F", text: "Belum ada sistem evaluasi untuk mengukur sejauh mana pendampingan yang diberikan benar-benar mengubah praktik pembelajaran." }
-                            ]
-                        },
-                        {
-                            id: "A2.4",
-                            title: "A2.4 — Dampak Ketiadaan Tenaga Laboran",
-                            context: "KSP mencatat tidak ada tenaga laboran — guru IPA harus menyiapkan praktikum sendiri.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Frekuensi kegiatan praktikum di laboratorium IPA lebih rendah dari yang ditetapkan dalam peraturan akademik (minimal 2 kali per semester)." },
-                                { label: "B", text: "Guru IPA menghabiskan waktu signifikan untuk persiapan laboratorium yang seharusnya bisa digunakan untuk perencanaan pembelajaran." },
-                                { label: "C", text: "Ada solusi sementara yang sudah dijalankan (misalnya: jadwal bergilir antar guru, pemberdayaan murid sebagai asisten praktikum)." },
-                                { label: "D", text: "Kondisi laboratorium yang belum memenuhi standar membatasi jenis praktikum yang dapat dilakukan." },
-                                { label: "E", text: "Ketiadaan laboran berdampak pada keselamatan kegiatan praktikum — ada risiko yang belum teridentifikasi secara formal." },
-                                { label: "F", text: "Yayasan sudah mempunyai rencana konkret untuk mengangkat tenaga laboran dalam waktu dekat." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "A3",
-                    title: "A3. ALUR PENYUSUNAN DAN KETERLIBATAN PIHAK DALAM KSP",
-                    questions: [
-                        {
-                            id: "A3.1",
-                            title: "A3.1 — Keterlibatan Murid dan Orang Tua dalam Penyusunan KSP",
-                            context: "KSP menyebut penyusun KSP adalah yayasan, kepala sekolah, guru, dan komite — murid dan orang tua tidak disebutkan.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Ada mekanisme lain (survei, forum, atau rapat komite) yang secara tidak langsung menyerap aspirasi murid dan orang tua, meskipun tidak tercantum dalam KSP." },
-                                { label: "B", text: "Aspirasi murid dan orang tua memang tidak dikumpulkan secara sistematis dalam proses penyusunan KSP tahun ini." },
-                                { label: "C", text: "Komite sekolah dianggap mewakili suara orang tua, tetapi dalam praktiknya peran komite lebih bersifat persetujuan formal daripada masukan substantif." },
-                                { label: "D", text: "Kepala sekolah menyadari celah ini dan berencana melibatkan murid dan orang tua secara lebih eksplisit dalam penyusunan KSP berikutnya." },
-                                { label: "E", text: "Murid hampir tidak pernah dimintai pendapat tentang relevansi program atau kurikulum yang dijalankan sekolah." },
-                                { label: "F", text: "Ada data dari kuesioner murid atau orang tua yang secara nyata mengubah salah satu komponen KSP tahun ini." }
-                            ]
-                        },
-                        {
-                            id: "A3.2",
-                            title: "A3.2 — Kecukupan Waktu Penyusunan KSP",
-                            context: "KSP disusun melalui workshop 19 Juni 2025 — kurang dari sebulan sebelum tahun ajaran dimulai.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Waktu satu bulan tidak cukup untuk melakukan analisis kebutuhan peserta didik secara mendalam sebelum KSP disahkan." },
-                                { label: "B", text: "Sebagian besar konten KSP 2025/2026 merupakan penyesuaian ringan dari KSP tahun sebelumnya, bukan hasil analisis ulang yang komprehensif." },
-                                { label: "C", text: "Workshop penyusunan KSP berfungsi lebih sebagai forum pengesahan daripada forum perancangan yang substantif." },
-                                { label: "D", text: "Ada proses pra-workshop yang dilakukan sebelum 19 Juni 2025 (seperti pengumpulan data atau diskusi awal) yang mendukung kualitas KSP." },
-                                { label: "E", text: "Guru tidak selalu memahami atau membaca isi KSP secara menyeluruh sebelum tahun ajaran dimulai." },
-                                { label: "F", text: "Keterlibatan pengawas SMA dalam workshop meningkatkan kualitas KSP secara substantif, bukan hanya memenuhi persyaratan administratif." }
+                                { label: "A", text: "Visi dipahami secara berbeda oleh guru yang berbeda — tidak ada pemahaman yang seragam." },
+                                { label: "B", text: "Visi terasa hadir dalam kegiatan kerohanian dan asrama, tetapi kurang terlihat dalam pembelajaran." },
+                                { label: "C", text: "Ada praktik pembelajaran konkret yang dapat ditunjuk sebagai bukti keterwujudan visi." },
+                                { label: "D", text: "Kepala sekolah secara rutin menggunakan bahasa visi dalam rapat dan supervisi." },
+                                { label: "E", text: "Visi lebih berfungsi sebagai pernyataan identitas kelembagaan." },
+                                { label: "F", text: "Visi sudah pernah dikaji ulang bersama seluruh warga sekolah dalam dua tahun terakhir." }
                             ]
                         }
                     ]
@@ -969,7 +530,7 @@ function doGet(e) {
         B: {
             title: "SEGMEN B — WAKIL KEPALA BIDANG KURIKULUM",
             subtitle: "SMA Kristen Indonesia Magelang (SMAKINDO) — TP 2025/2026",
-            instruction: "Pilih semua pernyataan yang benar-benar mencerminkan kondisi nyata di SMAKINDO saat ini. Anda boleh memilih lebih dari satu opsi dalam setiap pertanyaan. Tidak ada jawaban \"benar\" atau \"salah\" — yang dicari adalah gambaran kondisi yang paling akurat.",
+            instruction: "Pilih semua pernyataan yang benar-benar mencerminkan kondisi nyata di SMAKINDO saat ini.",
             sections: [
                 {
                     id: "B1",
@@ -978,167 +539,15 @@ function doGet(e) {
                         {
                             id: "B1.1",
                             title: "B1.1 — Kelengkapan dan Konsistensi Penggunaan ATP",
-                            context: "KSP hanya mencantumkan ATP untuk mata pelajaran Kimia Fase E sebagai contoh. Seluruh mata pelajaran Fase E dan F belum terkonfirmasi memiliki ATP lengkap.",
+                            context: "KSP hanya mencantumkan ATP untuk mata pelajaran Kimia Fase E sebagai contoh.",
                             instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
                             options: [
-                                { label: "A", text: "Tidak semua mata pelajaran di Fase E dan F memiliki ATP yang sudah disusun dan terdokumentasi secara lengkap." },
-                                { label: "B", text: "Sebagian guru menggunakan ATP dari Kemendikbudristek (Capaian Pembelajaran resmi) tanpa adaptasi kontekstual untuk SMAKINDO." },
-                                { label: "C", text: "Ada ATP yang sudah disusun mandiri oleh guru dan dapat ditunjukkan kepada tim reviu sebagai bukti konkret." },
-                                { label: "D", text: "ATP yang ada belum digunakan secara konsisten sebagai panduan perencanaan pembelajaran mingguan — lebih berfungsi sebagai dokumen administratif." },
-                                { label: "E", text: "Wakil Kepala Kurikulum secara rutin memverifikasi kesesuaian antara ATP dan modul ajar yang digunakan guru." },
-                                { label: "F", text: "Hambatan utama penyelesaian ATP adalah beban multi-mapel guru, bukan ketidakmampuan menyusunnya." }
-                            ]
-                        },
-                        {
-                            id: "B1.2",
-                            title: "B1.2 — Verifikasi Pembelajaran Berdiferensiasi di Kelas",
-                            context: "KSP menyatakan guru menggunakan Pembelajaran Berdiferensiasi: diferensiasi konten, proses, dan produk.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Diferensiasi yang paling sering diterapkan adalah diferensiasi proses (cara kerja murid), bukan diferensiasi konten atau produk." },
-                                { label: "B", text: "Diferensiasi lebih banyak tercantum dalam dokumen modul ajar daripada benar-benar terjadi dalam praktik pembelajaran di kelas." },
-                                { label: "C", text: "Ada bukti dokumentasi diferensiasi yang dapat ditunjukkan (misalnya: lembar kerja berlevel, catatan observasi kebutuhan murid, atau portofolio produk yang bervariasi)." },
-                                { label: "D", text: "Wakil Kepala Kurikulum menggunakan hasil supervisi atau observasi kelas sebagai dasar verifikasi pelaksanaan diferensiasi." },
-                                { label: "E", text: "Sebagian guru mengalami kesulitan operasional dalam menjalankan tiga jenis diferensiasi sekaligus karena rasio murid-guru dan waktu yang terbatas." },
-                                { label: "F", text: "Belum ada instrumen monitoring yang terstandar untuk memverifikasi implementasi pembelajaran berdiferensiasi secara lintas kelas dan mata pelajaran." }
-                            ]
-                        },
-                        {
-                            id: "B1.3",
-                            title: "B1.3 — Penanganan Kesenjangan Kemampuan Awal Murid (Jawa vs Luar Jawa)",
-                            context: "KSP menyebutkan siswa dari Kalimantan dan Papua cenderung lebih lambat menangkap materi dibanding siswa dari Jawa.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Kesenjangan kemampuan awal antara murid dari Jawa dan luar Jawa sudah teridentifikasi dalam data diagnostik yang terdokumentasi." },
-                                { label: "B", text: "Perbedaan kemampuan awal ini belum ditangani secara sistematis dalam ATP atau modul ajar — lebih banyak ditangani secara improvisasi oleh guru di kelas." },
-                                { label: "C", text: "Program matrikulasi malam hari adalah satu-satunya intervensi terstruktur yang disiapkan untuk menjembatani kesenjangan ini." },
-                                { label: "D", text: "Ada adaptasi ATP atau penambahan scaffolding dalam modul ajar yang secara eksplisit dirancang untuk murid dari daerah 3T." },
-                                { label: "E", text: "Frasa \"lebih lambat menangkap materi\" dalam KSP mencerminkan persepsi yang belum diverifikasi dengan data diagnostik yang objektif." },
-                                { label: "F", text: "Guru dari seluruh mata pelajaran sudah mendapat pembekalan khusus tentang cara menangani murid dengan latar belakang pendidikan dasar yang sangat beragam." }
-                            ]
-                        },
-                        {
-                            id: "B1.4",
-                            title: "B1.4 — Efektivitas Program Matrikulasi untuk Murid 3T",
-                            context: "KSP menetapkan matrikulasi: pendampingan belajar malam hari, 2 kali per minggu, untuk peserta didik dari daerah 3T.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Target Capaian Pembelajaran atau Tujuan Pembelajaran yang menjadi sasaran matrikulasi sudah dirumuskan secara tertulis." },
-                                { label: "B", text: "Kemajuan murid dalam program matrikulasi diukur secara berkala dengan instrumen yang terstandar." },
-                                { label: "C", text: "Program matrikulasi berjalan lebih karena inisiatif guru dan siswa mentor yang peduli daripada karena sistem yang terstruktur." },
-                                { label: "D", text: "Belum ada data yang dapat menunjukkan bahwa murid yang mengikuti matrikulasi mengalami peningkatan hasil belajar yang terukur." },
-                                { label: "E", text: "Frekuensi 2 kali per minggu belum cukup untuk menjembatani kesenjangan yang ada, tetapi sekolah belum memiliki kapasitas untuk menambahnya." },
-                                { label: "F", text: "Ada evaluasi formal terhadap program matrikulasi yang dilakukan setiap semester untuk menilai efektivitasnya." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "B2",
-                    title: "B2. KOKURIKULER UNTUK PENCAPAIAN SKL DELAPAN DIMENSI PROFIL LULUSAN",
-                    questions: [
-                        {
-                            id: "B2.1",
-                            title: "B2.1 — Pemetaan 8 Dimensi Profil Lulusan ke Tema Kokurikuler",
-                            context: "KSP menetapkan syarat kenaikan kelas mencakup pemenuhan 8 dimensi profil kelulusan melalui observasi dan projek STEAM.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Pemetaan 8 dimensi profil lulusan ke setiap tema kokurikuler sudah terdokumentasi dalam modul projek yang dapat ditunjukkan." },
-                                { label: "B", text: "Pemetaan 8 dimensi ke tema kokurikuler ada secara implisit dalam modul, tetapi tidak dinyatakan secara eksplisit dan terverifikasi." },
-                                { label: "C", text: "Guru koordinator kokurikuler kesulitan menjelaskan secara konkret dimensi profil lulusan mana yang dicapai melalui tema tertentu." },
-                                { label: "D", text: "Ada tema kokurikuler yang secara natural lebih mudah dipetakan ke dimensi tertentu (misalnya: Kearifan Lokal → dimensi keberagaman), tetapi tema lain lebih lemah pemetaannya." },
-                                { label: "E", text: "8 dimensi profil lulusan dipahami berbeda antar guru koordinator kokurikuler — belum ada kesamaan pemahaman yang terbangun." },
-                                { label: "F", text: "Pemetaan dimensi ke tema dilakukan secara kolaboratif oleh tim guru dan sudah divalidasi oleh wakil kepala kurikulum." }
-                            ]
-                        },
-                        {
-                            id: "B2.2",
-                            title: "B2.2 — Diferensiasi Kedalaman Kokurikuler Kelas XI dan XII (Tema Kewirausahaan Identik)",
-                            context: "Kelas XI dan XII sama-sama menjalankan tema Kewirausahaan (Simulasi UMKM). KSP tidak menjelaskan diferensiasi kedalaman pencapaian.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Kegiatan kokurikuler Kewirausahaan di Kelas XI dan XII menggunakan modul yang sama tanpa diferensiasi kedalaman pencapaian 8 dimensi profil lulusan yang terencana." },
-                                { label: "B", text: "Ada perbedaan ekspektasi output antara Kelas XI dan XII dalam tema Kewirausahaan, tetapi perbedaan itu tidak dinyatakan secara tertulis dalam modul projek." },
-                                { label: "C", text: "Duplikasi tema ini sudah disadari sebagai celah, dan ada rencana perubahan untuk TP berikutnya." },
-                                { label: "D", text: "Perbedaan kedalaman diharapkan muncul secara alamiah karena murid Kelas XII lebih matang, tanpa dirancang secara eksplisit." },
-                                { label: "E", text: "Evaluasi pencapaian 8 dimensi antara Kelas XI dan Kelas XII menggunakan kriteria yang identik, sehingga tidak dapat menunjukkan perkembangan lintas tahun." },
-                                { label: "F", text: "Ada bukti bahwa murid Kelas XII menunjukkan penguasaan dimensi profil lulusan yang lebih tinggi dibanding Kelas XI dalam tema yang sama." }
-                            ]
-                        },
-                        {
-                            id: "B2.3",
-                            title: "B2.3 — Instrumen Penilaian Ketercapaian 8 Dimensi Profil Lulusan",
-                            context: "KSP menyebutkan penilaian 8 dimensi melalui observasi dan projek STEAM, tetapi tidak mencantumkan instrumen observasinya.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Instrumen observasi 8 dimensi profil lulusan belum tersedia dalam bentuk tertulis yang dapat digunakan secara konsisten oleh seluruh guru." },
-                                { label: "B", text: "Ada rubrik penilaian kokurikuler yang digunakan, tetapi tidak secara eksplisit dikaitkan dengan 8 dimensi profil lulusan." },
-                                { label: "C", text: "Guru koordinator kokurikuler masing-masing mengembangkan instrumen sendiri — tidak ada standarisasi antar kelas." },
-                                { label: "D", text: "Ada instrumen yang sudah divalidasi secara internal dan dapat ditunjukkan kepada tim reviu." },
-                                { label: "E", text: "Konsistensi penilaian antar guru belum pernah diverifikasi melalui kalibrasi atau moderasi penilaian bersama." },
-                                { label: "F", text: "Hasil penilaian 8 dimensi profil lulusan sudah pernah digunakan untuk mengidentifikasi dimensi mana yang belum tercapai secara kolektif dan menginformasikan perbaikan program." }
-                            ]
-                        },
-                        {
-                            id: "B2.4",
-                            title: "B2.4 — Proporsionalitas Alokasi 30% Jam Pelajaran untuk Kokurikuler",
-                            context: "KSP mengalokasikan sekitar 30% total jam pelajaran per tahun untuk kokurikuler.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Alokasi 30% sudah tepat dan terbukti cukup untuk membangun 8 dimensi profil lulusan secara utuh." },
-                                { label: "B", text: "Ada kekhawatiran dari guru bahwa alokasi 30% untuk kokurikuler mengurangi waktu yang tersedia untuk pencapaian Capaian Pembelajaran intrakurikuler." },
-                                { label: "C", text: "Dimensi profil lulusan yang paling sulit dicapai melalui kokurikuler belum pernah diidentifikasi secara formal." },
-                                { label: "D", text: "Pelaksanaan kokurikuler terkadang memakan waktu lebih dari 30% karena persiapan yang kurang terencana, sehingga mengganggu jadwal intrakurikuler." },
-                                { label: "E", text: "Ada dimensi profil lulusan (misalnya: nalar kritis atau kreativitas) yang lebih mudah dicapai melalui intrakurikuler, tetapi justru lebih banyak difokuskan di kokurikuler." },
-                                { label: "F", text: "Evaluasi terhadap efektivitas alokasi 30% ini pernah dilakukan dan hasilnya memengaruhi rancangan kokurikuler tahun berikutnya." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "B3",
-                    title: "B3. ASESMEN PEMBELAJARAN",
-                    questions: [
-                        {
-                            id: "B3.1",
-                            title: "B3.1 — Pemahaman dan Konsistensi Penggunaan Tiga Jenis Asesmen",
-                            context: "KSP menyebut Diagnostik, Formatif, dan Sumatif — tetapi ada inkonsistensi: Bab IV menyebut \"Asesmen Formatif dilakukan sebelum pembelajaran dimulai,\" yang seharusnya adalah fungsi Diagnostik.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Inkonsistensi antara Bab IV dan bagian lain KSP tentang definisi asesmen formatif belum pernah diidentifikasi atau dikoreksi sebelumnya." },
-                                { label: "B", text: "Sebagian guru masih mencampuradukkan fungsi asesmen diagnostik dan formatif dalam praktik pembelajaran sehari-hari." },
-                                { label: "C", text: "Ada kesepakatan bersama yang tertulis tentang definisi dan fungsi ketiga jenis asesmen yang dibuat bersama seluruh guru." },
-                                { label: "D", text: "Perbedaan pemahaman tentang jenis asesmen tidak berdampak besar pada praktik — yang penting guru memperoleh informasi tentang kebutuhan belajar murid." },
-                                { label: "E", text: "Wakil Kepala Kurikulum menyadari ketidakkonsistenan tersebut dan sudah atau akan menindaklanjutinya dalam sosialisasi perangkat ajar." },
-                                { label: "F", text: "Inkonsistensi definisi asesmen menyebabkan pelaporan kepada orang tua tidak selalu mencerminkan jenis asesmen yang sebenarnya digunakan guru." }
-                            ]
-                        },
-                        {
-                            id: "B3.2",
-                            title: "B3.2 — Penggunaan Hasil Asesmen Formatif untuk Perbaikan Pembelajaran",
-                            context: "KSP menyatakan hasil asesmen formatif digunakan sebagai umpan balik — sumatif untuk pelaporan.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Ada contoh konkret di mana hasil asesmen formatif menyebabkan seorang guru mengubah rencana pembelajaran minggu berikutnya secara substantif." },
-                                { label: "B", text: "Asesmen formatif lebih sering berfungsi sebagai \"cek pemahaman\" sesaat daripada data yang mengubah desain pembelajaran." },
-                                { label: "C", text: "Guru tidak selalu memiliki waktu untuk menganalisis hasil asesmen formatif secara mendalam di antara jadwal yang padat." },
-                                { label: "D", text: "Ada mekanisme sistematis (misalnya: form refleksi guru mingguan atau rekap data asesmen) yang membantu guru menggunakan data formatif untuk perencanaan." },
-                                { label: "E", text: "Hasil asesmen formatif lebih banyak tersimpan dalam catatan personal guru daripada terdokumentasi dalam sistem yang dapat diakses oleh wakil kepala kurikulum." },
-                                { label: "F", text: "Perbedaan antara fungsi formatif dan sumatif dalam praktik pelaporan rapor belum terstandar — ada guru yang memasukkan nilai formatif dalam rapor." }
-                            ]
-                        },
-                        {
-                            id: "B3.3",
-                            title: "B3.3 — Validitas dan Penggunaan Kuesioner Evaluasi Murid dan Orang Tua",
-                            context: "KSP menyebutkan kuesioner murid (Oktober 2025 dan April 2026) dan orang tua (Oktober 2025 dan April 2026) sebagai instrumen evaluasi pembelajaran.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Kuesioner untuk murid dan orang tua sudah dirancang dan dapat ditunjukkan kepada tim reviu." },
-                                { label: "B", text: "Kuesioner belum pernah divalidasi secara formal (misalnya: uji keterbacaan, kesesuaian dengan tujuan reviu, atau uji konsistensi item)." },
-                                { label: "C", text: "Hasil kuesioner dianalisis dan dilaporkan kepada kepala sekolah dalam bentuk ringkasan tertulis." },
-                                { label: "D", text: "Hasil kuesioner belum pernah secara nyata mengubah kebijakan atau program yang tercantum dalam KSP." },
-                                { label: "E", text: "Pengisian kuesioner oleh orang tua memiliki tingkat respons yang rendah — tidak semua orang tua mengisi dan mengembalikan kuesioner." },
-                                { label: "F", text: "Ada siklus umpan balik yang jelas: hasil kuesioner dikomunikasikan kembali kepada murid dan orang tua sehingga mereka tahu pendapat mereka digunakan." }
+                                { label: "A", text: "Tidak semua mata pelajaran di Fase E dan F memiliki ATP yang lengkap." },
+                                { label: "B", text: "Sebagian guru menggunakan ATP dari Kemendikbudristek tanpa adaptasi." },
+                                { label: "C", text: "Ada ATP yang sudah disusun mandiri oleh guru." },
+                                { label: "D", text: "ATP belum digunakan secara konsisten sebagai panduan perencanaan." },
+                                { label: "E", text: "Wakil Kepala Kurikulum secara rutin memverifikasi ATP dan modul ajar." },
+                                { label: "F", text: "Hambatan utama adalah beban multi-mapel guru." }
                             ]
                         }
                     ]
@@ -1148,7 +557,7 @@ function doGet(e) {
         C: {
             title: "SEGMEN C — PENDIDIK (GURU)",
             subtitle: "SMA Kristen Indonesia Magelang (SMAKINDO) — TP 2025/2026",
-            instruction: "Pilih semua pernyataan yang benar-benar mencerminkan kondisi nyata dalam praktik Anda mengajar di SMAKINDO saat ini. Anda boleh memilih lebih dari satu opsi dalam setiap pertanyaan. Tidak ada jawaban \"benar\" atau \"salah\" — yang dicari adalah gambaran yang paling jujur tentang kondisi aktual di kelas.",
+            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata dalam praktik mengajar Anda.",
             sections: [
                 {
                     id: "C1",
@@ -1156,174 +565,16 @@ function doGet(e) {
                     questions: [
                         {
                             id: "C1.1",
-                            title: "C1.1 — Asesmen Diagnostik dan Dampaknya pada Rancangan Pembelajaran",
-                            context: "KSP menyatakan guru melakukan asesmen diagnostik non-kognitif di awal tahun ajaran melalui dialog, diskusi kelompok kecil, tanya jawab, atau survei/angket.",
+                            title: "C1.1 — Asesmen Diagnostik dan Dampaknya",
+                            context: "KSP menyatakan guru melakukan asesmen diagnostik non-kognitif di awal tahun.",
                             instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
                             options: [
-                                { label: "A", text: "Saya melakukan asesmen diagnostik di awal tahun, tetapi hasilnya tidak selalu mengubah rencana pembelajaran yang sudah saya siapkan." },
-                                { label: "B", text: "Asesmen diagnostik yang saya lakukan menghasilkan data konkret yang kemudian saya gunakan untuk mengelompokkan murid atau merancang diferensiasi." },
-                                { label: "C", text: "Asesmen diagnostik saya lebih banyak bersifat kognitif (misalnya: kuis atau tes awal) daripada non-kognitif (gaya belajar, minat, latar belakang)." },
-                                { label: "D", text: "Saya menggunakan hasil asesmen diagnostik secara berbeda untuk setiap mata pelajaran yang saya ampu." },
-                                { label: "E", text: "Hasil asesmen diagnostik saya dokumentasikan dan dapat ditunjukkan sebagai bukti kepada tim reviu." },
-                                { label: "F", text: "Keterbatasan waktu membuat asesmen diagnostik tidak selalu dilakukan secara mendalam — lebih sering dilakukan secara sepintas di awal pertemuan pertama." }
-                            ]
-                        },
-                        {
-                            id: "C1.2",
-                            title: "C1.2 — Strategi Diferensiasi untuk Menjembatani Kesenjangan Kemampuan Awal",
-                            context: "KSP menyebutkan murid berasal dari berbagai provinsi (Jawa Barat, Papua, NTT, Kalimantan, Sulawesi) dengan kemampuan awal yang sangat beragam.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Diferensiasi yang paling sering saya lakukan adalah diferensiasi proses — memberikan langkah pengerjaan yang berbeda untuk murid yang berbeda tingkat pemahamannya." },
-                                { label: "B", text: "Saya lebih sering memberikan tugas yang sama untuk semua murid, tetapi dengan bimbingan yang lebih intensif bagi murid yang membutuhkan." },
-                                { label: "C", text: "Diferensiasi konten (materi yang berbeda) sulit saya lakukan karena Capaian Pembelajaran harus sama untuk semua murid dalam satu kelas." },
-                                { label: "D", text: "Saya menggunakan murid mentor (teman sebaya yang lebih mahir) sebagai strategi diferensiasi secara informal." },
-                                { label: "E", text: "Saya kesulitan merancang diferensiasi yang bermakna untuk kelas yang memiliki rentang kemampuan sangat lebar (lebih dari 3 tingkat perbedaan)." },
-                                { label: "F", text: "Ada satu strategi diferensiasi yang sudah saya coba dan terbukti efektif — saya dapat mendeskripsikannya dengan contoh konkret." }
-                            ]
-                        },
-                        {
-                            id: "C1.3",
-                            title: "C1.3 — Penggunaan Pertanyaan Terbuka dan Umpan Balik Mendalam",
-                            context: "KSP menyebutkan pendidik harus menggunakan pertanyaan terbuka yang menstimulasi pemikiran mendalam dan memberikan umpan balik yang mendorong eksplorasi.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Saya menggunakan pertanyaan terbuka secara rutin, tetapi sebagian besar murid masih cenderung memberikan jawaban singkat atau pasif." },
-                                { label: "B", text: "Ada momen pembelajaran konkret tahun ini di mana pertanyaan terbuka yang saya ajukan memicu diskusi mendalam yang tulus di kelas." },
-                                { label: "C", text: "Saya lebih sering menggunakan pertanyaan tertutup karena tekanan waktu dan ketuntasan materi." },
-                                { label: "D", text: "Umpan balik yang saya berikan kepada murid lebih sering berupa koreksi jawaban daripada pertanyaan lanjutan yang mendorong eksplorasi." },
-                                { label: "E", text: "Saya merekam atau mendokumentasikan momen-momen pertanyaan terbuka yang berhasil sebagai bahan refleksi mengajar saya." },
-                                { label: "F", text: "Murid dari luar Jawa cenderung lebih pasif dalam merespons pertanyaan terbuka — ini adalah tantangan tersendiri yang belum sepenuhnya saya atasi." }
-                            ]
-                        },
-                        {
-                            id: "C1.4",
-                            title: "C1.4 — Integrasi Kehidupan Berkelanjutan dalam Mata Pelajaran",
-                            context: "KSP menyatakan guru mengintegrasikan sustainable living (hemat air, listrik, pengurangan sampah) dalam pembelajaran.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Integrasi sustainable living dalam mata pelajaran saya lebih bersifat penyebutan kontekstual, bukan dirancang sebagai bagian dari Tujuan Pembelajaran." },
-                                { label: "B", text: "Ada modul ajar saya yang secara eksplisit mencantumkan konten atau tugas terkait gaya hidup berkelanjutan." },
-                                { label: "C", text: "Integrasi ini terasa lebih mudah untuk mata pelajaran tertentu (IPA, Geografi, dll.) dan kurang relevan untuk mata pelajaran saya." },
-                                { label: "D", text: "Murid menunjukkan ketertarikan nyata ketika pembelajaran dikaitkan dengan isu lingkungan di sekitar kehidupan asrama mereka." },
-                                { label: "E", text: "Integrasi sustainable living lebih banyak saya lakukan dalam kegiatan kokurikuler daripada intrakurikuler di kelas." },
-                                { label: "F", text: "Saya belum menemukan cara yang natural untuk mengintegrasikan tema ini secara konsisten ke dalam silabus mata pelajaran saya." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "C2",
-                    title: "C2. SUMBER BELAJAR DAN KESESUAIAN DENGAN PERKEMBANGAN MURID",
-                    questions: [
-                        {
-                            id: "C2.1",
-                            title: "C2.1 — Adaptasi Modul Ajar: Konteks SMAKINDO vs Unduhan Langsung",
-                            context: "KSP menyebutkan guru dapat menggunakan atau mengadaptasi ATP dan modul ajar dari Kemendikbudristek.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Lebih dari 50% modul ajar yang saya gunakan adalah unduhan langsung dari platform Kemendikbudristek/PMM tanpa adaptasi." },
-                                { label: "B", text: "Saya melakukan adaptasi pada bagian konteks, contoh, dan kegiatan pembelajaran — tetapi tidak selalu pada tujuan pembelajaran atau asesmen." },
-                                { label: "C", text: "Saya menyusun modul ajar sendiri dari awal untuk mata pelajaran yang konteksnya sangat spesifik terhadap murid SMAKINDO." },
-                                { label: "D", text: "Modul ajar yang saya gunakan sudah mempertimbangkan latar belakang budaya dan kemampuan awal murid SMAKINDO yang beragam." },
-                                { label: "E", text: "Saya tidak selalu memiliki waktu untuk mengadaptasi modul — penggunaan langsung dari PMM adalah pilihan realistis dalam kondisi beban mengajar multi-mapel." },
-                                { label: "F", text: "Ada modul ajar hasil adaptasi saya yang dapat saya tunjukkan sebagai contoh konkret kepada tim reviu." }
-                            ]
-                        },
-                        {
-                            id: "C2.2",
-                            title: "C2.2 — Pemberdayaan Narasumber Komunitas dan Ahli Eksternal",
-                            context: "KSP mencantumkan pemberdayaan masyarakat sekitar, komunitas, organisasi, dan ahli dari berbagai profesi sebagai narasumber.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Saya belum pernah menghadirkan narasumber eksternal dari komunitas atau profesi tertentu dalam pembelajaran saya selama TP 2025/2026." },
-                                { label: "B", text: "Narasumber eksternal pernah dihadirkan, tetapi lebih dalam konteks kegiatan kokurikuler, bukan intrakurikuler di kelas." },
-                                { label: "C", text: "Ada kendala praktis (biaya, transportasi, jadwal) yang membuat pemberdayaan narasumber eksternal sulit dilakukan secara rutin." },
-                                { label: "D", text: "Saya pernah menghadirkan atau menghubungkan murid dengan narasumber eksternal yang relevan dengan mata pelajaran saya dalam TP ini." },
-                                { label: "E", text: "Keterlibatan narasumber eksternal yang pernah dilakukan terbukti meningkatkan keterlibatan dan motivasi belajar murid secara nyata." },
-                                { label: "F", text: "Sekolah menyediakan daftar atau jaringan narasumber yang dapat diakses oleh guru sebagai referensi." }
-                            ]
-                        },
-                        {
-                            id: "C2.3",
-                            title: "C2.3 — Koneksi Kompetensi Digital (Content Creator) dengan Intrakurikuler",
-                            context: "KSP menyebutkan ekstrakurikuler Content Creator Video yang membekali murid dengan keterampilan AI dalam pembuatan video.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Saya tidak mengetahui secara pasti kompetensi digital spesifik apa yang sudah dimiliki murid dari kegiatan ekstrakurikuler Content Creator." },
-                                { label: "B", text: "Saya pernah memanfaatkan kompetensi digital murid dari ekstrakurikuler tersebut dalam tugas atau kegiatan pembelajaran di kelas saya." },
-                                { label: "C", text: "Ada potensi integrasi yang belum dimanfaatkan antara keterampilan membuat video dan presentasi digital murid dengan mata pelajaran saya." },
-                                { label: "D", text: "Integrasi kompetensi digital dalam intrakurikuler sudah terjadi secara organik, meskipun tidak direncanakan secara formal dalam ATP atau modul ajar." },
-                                { label: "E", text: "Tidak ada koordinasi formal antara pembina ekstrakurikuler Content Creator dan guru mata pelajaran untuk mengintegrasikan kompetensi yang dibangun." },
-                                { label: "F", text: "Saya mengintegrasikan penggunaan AI atau teknologi digital secara eksplisit dalam salah satu modul ajar atau tugas yang saya rancang." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "C3",
-                    title: "C3. REMEDIAL DAN PENGAYAAN",
-                    questions: [
-                        {
-                            id: "C3.1",
-                            title: "C3.1 — Ketuntasan Remedial Sebelum Fase Berikutnya",
-                            context: "KSP mengatur remedial dilakukan setelah asesmen sumatif, sebelum murid memasuki fase berikutnya.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Dalam praktiknya, murid melanjutkan ke materi berikutnya meskipun remedial belum tuntas karena tekanan jadwal." },
-                                { label: "B", text: "Remedial yang saya lakukan menggunakan pendekatan yang berbeda dari cara saya mengajar pertama kali — bukan mengulang materi yang sama." },
-                                { label: "C", text: "Murid yang mengikuti remedial tidak selalu mencapai ketuntasan setelah satu kali remedial — ada yang perlu remedial lebih dari sekali." },
-                                { label: "D", text: "Ada dokumentasi hasil remedial yang dapat saya tunjukkan sebagai bukti kepada tim reviu." },
-                                { label: "E", text: "Waktu yang tersedia untuk remedial sangat terbatas karena padatnya jadwal — sering dilakukan tergesa-gesa menjelang akhir semester." },
-                                { label: "F", text: "Saya mengevaluasi efektivitas program remedial saya secara berkala dan menyesuaikan pendekatannya jika perlu." }
-                            ]
-                        },
-                        {
-                            id: "C3.2",
-                            title: "C3.2 — Pengayaan Bermakna vs Tugas Tambahan",
-                            context: "KSP mendefinisikan pengayaan sebagai kegiatan bagi murid yang melampaui persyaratan minimal — dalam bentuk belajar mandiri, kelompok, atau pemadatan kurikulum.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Pengayaan yang saya berikan lebih sering berupa tugas tambahan atau soal lebih banyak, bukan kegiatan yang memperluas atau memperdalam pemahaman secara bermakna." },
-                                { label: "B", text: "Saya merancang kegiatan pengayaan yang terstruktur — dengan tujuan spesifik, kegiatan yang menantang, dan produk yang berbeda dari murid reguler." },
-                                { label: "C", text: "Murid yang sudah tuntas sering menunggu atau tidak dimanfaatkan dengan baik selama teman-temannya mengikuti remedial." },
-                                { label: "D", text: "Ada contoh kegiatan pengayaan yang bermakna yang pernah saya rancang dan dapat saya ceritakan kepada tim reviu." },
-                                { label: "E", text: "Saya kesulitan merancang pengayaan bermakna karena tidak ada panduan atau contoh yang memadai dari kurikulum atau pelatihan yang saya ikuti." },
-                                { label: "F", text: "Murid yang menerima pengayaan menunjukkan perkembangan kompetensi yang dapat saya observasi dan laporkan secara spesifik." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "C4",
-                    title: "C4. EVALUASI DAN PENGEMBANGAN PROFESIONAL",
-                    questions: [
-                        {
-                            id: "C4.1",
-                            title: "C4.1 — Komunitas Belajar Sekolah: Rutinitas dan Dampak Nyata",
-                            context: "KSP menyebutkan adanya Komunitas Belajar Sekolah yang dikukuhkan melalui SK.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Komunitas Belajar Sekolah bertemu secara rutin sesuai jadwal yang ditetapkan dalam SK." },
-                                { label: "B", text: "Pertemuan komunitas belajar lebih banyak diisi dengan diskusi administratif daripada eksplorasi praktik mengajar yang inovatif." },
-                                { label: "C", text: "Ada setidaknya satu perubahan nyata dalam cara saya mengajar yang dapat saya lacak langsung dari diskusi dalam komunitas belajar." },
-                                { label: "D", text: "Komunitas belajar terasa formalitas — anggotanya hadir tetapi keterlibatan aktifnya rendah." },
-                                { label: "E", text: "Topik yang paling sering dibahas dalam komunitas belajar adalah asesmen dan pelaporan, bukan desain pembelajaran atau pengembangan kurikulum." },
-                                { label: "F", text: "Ada kolaborasi antar guru lintas mata pelajaran yang lahir dari komunitas belajar dan berdampak nyata pada pembelajaran murid." }
-                            ]
-                        },
-                        {
-                            id: "C4.2",
-                            title: "C4.2 — Implementasi Pendekatan STEAM Pasca-Workshop (7 Juli 2025)",
-                            context: "KSP mencatat Workshop Pembelajaran Mendalam dengan STEAM (7 Juli 2025, difasilitasi Dosen FMIPA UKSW).",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Saya mengikuti workshop STEAM tersebut dan mendapatkan pemahaman baru tentang integrasi STEAM dalam pembelajaran." },
-                                { label: "B", text: "Saya sudah menerapkan minimal satu elemen pendekatan STEAM dalam modul ajar atau kegiatan kokurikuler setelah workshop." },
-                                { label: "C", text: "Pendekatan STEAM masih sulit saya operasionalkan dalam konteks mata pelajaran saya — teorinya jelas tetapi praktiknya tidak." },
-                                { label: "D", text: "Workshop berlangsung sangat dekat dengan awal tahun ajaran, sehingga waktu untuk menyiapkan implementasinya sangat terbatas." },
-                                { label: "E", text: "Belum ada tindak lanjut formal dari sekolah untuk memastikan hasil workshop diimplementasikan dalam pembelajaran." },
-                                { label: "F", text: "Ada mata pelajaran atau tema P5 di SMAKINDO yang secara alami lebih mudah untuk mengadopsi pendekatan STEAM — dan saya dapat menyebutkannya." }
+                                { label: "A", text: "Saya melakukan asesmen diagnostik, tetapi hasilnya tidak selalu mengubah rencana." },
+                                { label: "B", text: "Asesmen diagnostik menghasilkan data konkret untuk diferensiasi." },
+                                { label: "C", text: "Asesmen diagnostik saya lebih banyak bersifat kognitif." },
+                                { label: "D", text: "Saya menggunakan hasil asesmen berbeda untuk setiap mapel." },
+                                { label: "E", text: "Hasil asesmen diagnostik saya dokumentasikan." },
+                                { label: "F", text: "Keterbatasan waktu membuat asesmen tidak selalu mendalam." }
                             ]
                         }
                     ]
@@ -1333,7 +584,7 @@ function doGet(e) {
         D: {
             title: "SEGMEN D — TENAGA KEPENDIDIKAN",
             subtitle: "SMA Kristen Indonesia Magelang (SMAKINDO) — TP 2025/2026",
-            instruction: "Pilih semua pernyataan yang benar-benar mencerminkan kondisi nyata dalam peran Anda sebagai tenaga kependidikan di SMAKINDO. Anda boleh memilih lebih dari satu opsi dalam setiap pertanyaan. Tidak ada jawaban \"benar\" atau \"salah\" — yang dicari adalah gambaran yang paling jujur tentang situasi aktual.",
+            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata dalam peran Anda.",
             sections: [
                 {
                     id: "D1",
@@ -1341,78 +592,16 @@ function doGet(e) {
                     questions: [
                         {
                             id: "D1.1",
-                            title: "D1.1 — Dampak Keterbatasan Jumlah Tenaga Kependidikan terhadap Layanan Akademik",
-                            context: "KSP mengakui hanya ada 2 tenaga kependidikan — 1 Tenaga TU (S1 Teknologi Informasi) dan 1 Tenaga Perpustakaan (D3) yang \"sudah hampir purna tugas.\"",
+                            title: "D1.1 — Dampak Keterbatasan Jumlah Tenaga Kependidikan",
+                            context: "KSP mengakui hanya ada 2 tenaga kependidikan.",
                             instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
                             options: [
-                                { label: "A", text: "Beban kerja 2 tenaga kependidikan sudah melampaui kapasitas yang wajar — ada tugas yang sering tertunda atau tidak terlayani." },
-                                { label: "B", text: "Tenaga TU merangkap pekerjaan yang seharusnya dikerjakan oleh tenaga kependidikan lain (misalnya: membantu perpustakaan, administrasi kesiswaan, atau dukungan laboratorium)." },
-                                { label: "C", text: "Layanan administrasi akademik (legalisir, surat menyurat, pengarsipan nilai) dapat diselesaikan tepat waktu meskipun dengan beban yang berat." },
-                                { label: "D", text: "Kondisi tenaga perpustakaan yang mendekati purna tugas sudah menimbulkan kekhawatiran tentang kelangsungan layanan perpustakaan — tetapi belum ada rencana penggantian yang jelas." },
-                                { label: "E", text: "Guru atau kepala sekolah kadang harus membantu mengerjakan tugas administratif karena keterbatasan tenaga kependidikan." },
-                                { label: "F", text: "Ada sistem atau alat digital yang sudah dimanfaatkan untuk efisiensi pekerjaan administratif sehingga beban 2 orang lebih terkelola." }
-                            ]
-                        },
-                        {
-                            id: "D1.2",
-                            title: "D1.2 — Organisasi Layanan Laboratorium Tanpa Tenaga Laboran",
-                            context: "KSP menyatakan tidak ada tenaga laboran — guru mata pelajaran harus mempersiapkan laboratorium sendiri. Peraturan akademik mewajibkan minimal 2 praktikum per semester per mata pelajaran IPA.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Frekuensi praktikum di laboratorium IPA tidak selalu memenuhi ketentuan minimal 2 kali per semester karena tidak ada yang membantu persiapan." },
-                                { label: "B", text: "Ada jadwal penggunaan laboratorium yang terstruktur dan dikelola oleh tenaga kependidikan atau koordinator lab yang ditunjuk." },
-                                { label: "C", text: "Tidak ada jadwal penggunaan laboratorium yang terdokumentasi — penggunaannya bersifat ad hoc berdasarkan kebutuhan guru." },
-                                { label: "D", text: "Kondisi peralatan dan keselamatan laboratorium diperiksa secara rutin sebelum dan sesudah praktikum oleh pihak tertentu yang bertanggung jawab." },
-                                { label: "E", text: "Ada risiko keselamatan di laboratorium yang belum teridentifikasi atau tertangani karena tidak ada tenaga laboran yang mengawasinya." },
-                                { label: "F", text: "Murid dilibatkan dalam persiapan dan pembersihan laboratorium sebagai solusi sementara ketiadaan laboran — dan ini berjalan dengan mekanisme yang teratur." }
-                            ]
-                        },
-                        {
-                            id: "D1.3",
-                            title: "D1.3 — Kondisi Fisik Bangunan dan Dampak terhadap Pelaksanaan Program KSP",
-                            context: "KSP menyebut bangunan sekolah relatif tua, laboratorium belum memenuhi standar, dan asrama masih menyatu dengan gedung sekolah.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Kondisi fisik bangunan yang tua sudah menimbulkan kendala nyata dalam pelaksanaan program tertentu yang tercantum dalam KSP (misalnya: program STEAM, inklusif)." },
-                                { label: "B", text: "Asrama yang menyatu dengan gedung sekolah menimbulkan tantangan manajemen batas antara waktu belajar dan waktu pribadi murid." },
-                                { label: "C", text: "Ada kerusakan fisik ringan atau sedang pada bangunan yang belum ditangani dan dapat memengaruhi kenyamanan belajar murid." },
-                                { label: "D", text: "Kondisi fisik yang ada masih dapat dimanfaatkan secara kreatif untuk mendukung pembelajaran — keterbatasan tidak selalu menjadi halangan." },
-                                { label: "E", text: "Ada usulan perbaikan infrastruktur yang sudah diajukan ke yayasan, tetapi belum mendapat respons atau persetujuan anggaran." },
-                                { label: "F", text: "Kondisi infrastruktur belum pernah dinilai secara formal melalui inspeksi atau audit sarana prasarana dalam dua tahun terakhir." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "D2",
-                    title: "D2. DUKUNGAN LAYANAN PERPUSTAKAAN",
-                    questions: [
-                        {
-                            id: "D2.1",
-                            title: "D2.1 — Fungsi dan Pemanfaatan Fasilitas Internet Perpustakaan",
-                            context: "KSP mencantumkan bahwa peserta didik berhak mengakses bahan ajar dari fasilitas internet di perpustakaan untuk kepentingan pembelajaran.",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Fasilitas internet di perpustakaan berfungsi dengan baik dan dapat digunakan oleh murid tanpa hambatan teknis yang berarti." },
-                                { label: "B", text: "Akses internet di perpustakaan sering terganggu (lambat, tidak stabil, atau mati) sehingga mengurangi manfaatnya bagi murid." },
-                                { label: "C", text: "Rata-rata kunjungan murid ke perpustakaan per minggu sangat rendah (kurang dari 5 murid per hari) — perpustakaan tidak dimanfaatkan secara optimal." },
-                                { label: "D", text: "Ada aturan penggunaan internet di perpustakaan yang ditegakkan (misalnya: hanya untuk keperluan akademik, dengan pengawasan)." },
-                                { label: "E", text: "Peran perpustakaan lebih banyak sebagai ruang duduk atau belajar mandiri daripada sebagai pusat sumber belajar yang aktif." },
-                                { label: "F", text: "Tenaga perpustakaan aktif mempromosikan dan memfasilitasi murid untuk memanfaatkan koleksi buku dan fasilitas internet perpustakaan secara optimal." }
-                            ]
-                        },
-                        {
-                            id: "D2.2",
-                            title: "D2.2 — Kesiapan Transisi Layanan Perpustakaan Menghadapi Purna Tugas Petugas",
-                            context: "KSP menyebut tenaga perpustakaan \"sudah hampir purna tugas.\"",
-                            instruction: "Pilih semua pernyataan yang mencerminkan kondisi nyata:",
-                            options: [
-                                { label: "A", text: "Belum ada rencana tertulis dari sekolah atau yayasan untuk menggantikan tenaga perpustakaan yang akan purna tugas." },
-                                { label: "B", text: "Sistem katalog dan pengelolaan koleksi perpustakaan sudah terdigitalisasi sehingga memudahkan transisi jika terjadi pergantian petugas." },
-                                { label: "C", text: "Pengetahuan pengelolaan perpustakaan saat ini terpusat pada satu orang — belum ada transfer pengetahuan atau pendampingan kepada penerus." },
-                                { label: "D", text: "Ada guru atau staf lain yang sudah disiapkan atau bersedia untuk mengambil alih fungsi perpustakaan jika terjadi kekosongan." },
-                                { label: "E", text: "Koleksi perpustakaan belum diperbarui secara signifikan dalam dua tahun terakhir — relevansinya dengan kurikulum saat ini perlu dipertanyakan." },
-                                { label: "F", text: "Layanan perpustakaan akan terdampak signifikan jika tenaga perpustakaan purna tugas tanpa adanya penggantian — dan ini sudah diantisipasi oleh kepala sekolah." }
+                                { label: "A", text: "Beban kerja sudah melampaui kapasitas yang wajar." },
+                                { label: "B", text: "Tenaga TU merangkap pekerjaan yang seharusnya dikerjakan orang lain." },
+                                { label: "C", text: "Layanan administrasi dapat diselesaikan tepat waktu." },
+                                { label: "D", text: "Kondisi tenaga perpustakaan yang mendekati purna tugas mengkhawatirkan." },
+                                { label: "E", text: "Guru atau kepala sekolah kadang membantu tugas administratif." },
+                                { label: "F", text: "Ada sistem digital yang dimanfaatkan untuk efisiensi." }
                             ]
                         }
                     ]
@@ -1422,7 +611,7 @@ function doGet(e) {
         E: {
             title: "SEGMEN E — MURID (PESERTA DIDIK)",
             subtitle: "SMA Kristen Indonesia Magelang (SMAKINDO) — TP 2025/2026",
-            instruction: "Pilih semua pernyataan yang benar-benar sesuai dengan pengalaman kamu di SMAKINDO. Boleh pilih lebih dari satu. Tidak ada jawaban benar atau salah — yang dicari adalah cerita yang jujur tentang pengalaman belajar kamu yang sebenarnya.",
+            instruction: "Pilih semua yang sesuai dengan pengalamanmu di SMAKINDO.",
             sections: [
                 {
                     id: "E1",
@@ -1431,173 +620,15 @@ function doGet(e) {
                         {
                             id: "E1.1",
                             title: "E1.1 — Keterkaitan Pelajaran dengan Kehidupan Nyata",
-                            context: "KSP menyatakan pembelajaran dirancang dikaitkan dengan dunia nyata, lingkungan, dan budaya yang menarik minat peserta didik.",
+                            context: "KSP menyatakan pembelajaran dirancang dikaitkan dengan dunia nyata.",
                             instruction: "Pilih semua yang sesuai dengan pengalamanmu:",
                             options: [
-                                { label: "A", text: "Ada mata pelajaran yang benar-benar terasa berhubungan dengan kehidupan sehari-hariku — aku bisa menyebutkan contohnya." },
-                                { label: "B", text: "Sebagian besar pelajaran terasa jauh dari kehidupan nyataku — lebih banyak hafalan dan soal daripada penerapan nyata." },
-                                { label: "C", text: "Keterkaitan dengan kehidupan nyata lebih sering terasa di kegiatan kokurikuler atau P5 daripada di pelajaran biasa di kelas." },
-                                { label: "D", text: "Ada pelajaran yang terasa sangat tidak relevan dengan kehidupan di asrama atau konteks budaya daerahku." },
-                                { label: "E", text: "Guru kadang mengaitkan materi dengan contoh nyata, tetapi contoh yang dipilih tidak selalu dekat dengan pengalaman hidupku." },
-                                { label: "F", text: "Aku pernah bertanya kepada guruku mengapa kami perlu mempelajari sesuatu, dan guruku memberikan alasan yang benar-benar meyakinkanku." }
-                            ]
-                        },
-                        {
-                            id: "E1.2",
-                            title: "E1.2 — Ruang untuk Prakarsa, Kreativitas, dan Kemandirian Murid",
-                            context: "KSP menyatakan pendidik harus memberikan ruang yang cukup bagi prakarsa, kreativitas, dan kemandirian sesuai bakat, minat, dan perkembangan murid.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu:",
-                            options: [
-                                { label: "A", text: "Ada pelajaran tertentu di mana aku benar-benar merasa bebas untuk mengekspresikan ide atau kreativitasku sendiri." },
-                                { label: "B", text: "Sebagian besar waktu pelajaran diisi dengan mendengarkan penjelasan guru atau mengerjakan tugas yang sudah ditentukan langkah-langkahnya." },
-                                { label: "C", text: "Aku pernah mengusulkan cara belajar atau topik yang berbeda kepada guruku — dan usulku dipertimbangkan." },
-                                { label: "D", text: "Aku merasa lebih bebas berkreasi di kegiatan ekstrakurikuler daripada di kelas pelajaran biasa." },
-                                { label: "E", text: "Ketika aku punya ide yang berbeda dari yang diminta guru, aku biasanya menyimpannya sendiri karena tidak yakin akan diterima." },
-                                { label: "F", text: "Ada tugas atau projek yang benar-benar memberi kebebasan kepadaku untuk menentukan sendiri cara dan hasil akhirnya." }
-                            ]
-                        },
-                        {
-                            id: "E1.3",
-                            title: "E1.3 — Keseimbangan Waktu di Sekolah Berasrama",
-                            context: "KSP menyebutkan SMAKINDO adalah sekolah berasrama yang memberikan pendampingan penuh 24 jam.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu:",
-                            options: [
-                                { label: "A", text: "Aku merasa ada keseimbangan yang cukup baik antara waktu belajar, kegiatan asrama, ekstrakurikuler, dan waktu istirahatku." },
-                                { label: "B", text: "Ada momen tertentu dalam seminggu atau dalam semester di mana jadwal terasa sangat padat dan melelahkan." },
-                                { label: "C", text: "Waktu pribadiku (untuk membaca, beristirahat, atau melakukan hal yang kusukai sendiri) sering terasa sangat terbatas." },
-                                { label: "D", text: "Kegiatan asrama (kerohanian, kebersihan, dan kegiatan bersama) terkadang mengganggu waktu belajar atau istirahat yang aku butuhkan." },
-                                { label: "E", text: "Jadwal yang padat membuatku sulit untuk belajar secara mendalam — lebih banyak mengerjakan tugas daripada benar-benar memahami materi." },
-                                { label: "F", text: "Aku merasa SMAKINDO sudah memikirkan keseimbangan waktu dengan baik dan aku tidak merasa kelebihan beban." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "E2",
-                    title: "E2. ASESMEN DAN UMPAN BALIK",
-                    questions: [
-                        {
-                            id: "E2.1",
-                            title: "E2.1 — Kejelasan Kriteria Ketercapaian Tujuan Pembelajaran (KKTP)",
-                            context: "KSP menyebutkan guru harus menyampaikan KKTP kepada peserta didik agar mereka memahami ekspektasi yang harus dicapai.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu:",
-                            options: [
-                                { label: "A", text: "Ada guru yang selalu menjelaskan di awal apa yang akan dinilai dan kriteria apa yang membuat aku dinyatakan tuntas." },
-                                { label: "B", text: "Sebagian besar guru tidak menjelaskan kriteria penilaian di awal — aku hanya tahu aku tuntas atau tidak setelah nilai keluar." },
-                                { label: "C", text: "Kriteria penilaian dijelaskan, tetapi bahasa yang digunakan terlalu formal sehingga aku tidak selalu benar-benar memahaminya." },
-                                { label: "D", text: "Aku tahu mata pelajaran mana yang paling jelas kriteria penilaiannya dan mana yang paling tidak jelas — aku bisa menyebutkannya." },
-                                { label: "E", text: "Aku merasa tidak nyaman bertanya kepada guru tentang kriteria penilaian karena khawatir terlihat tidak paham." },
-                                { label: "F", text: "Adanya rubrik penilaian yang jelas sangat membantu aku untuk mempersiapkan tugas atau ujian dengan lebih baik." }
-                            ]
-                        },
-                        {
-                            id: "E2.2",
-                            title: "E2.2 — Kualitas dan Manfaat Umpan Balik dari Guru",
-                            context: "KSP menyatakan guru harus memberikan umpan balik berkala dan mendiskusikan tindak lanjutnya bersama peserta didik dan orang tua.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu:",
-                            options: [
-                                { label: "A", text: "Umpan balik yang paling sering aku terima adalah nilai atau skor angka — bukan penjelasan tentang apa yang perlu aku perbaiki." },
-                                { label: "B", text: "Ada guru yang memberikan umpan balik tertulis atau lisan yang spesifik dan membantu aku memahami di mana kesalahanku dan bagaimana memperbaikinya." },
-                                { label: "C", text: "Aku lebih sering mendapat umpan balik dari teman sebaya daripada dari guru secara langsung." },
-                                { label: "D", text: "Ada umpan balik dari guru yang benar-benar mengubah cara aku belajar atau mengerjakan tugas — aku bisa menceritakannya." },
-                                { label: "E", text: "Umpan balik yang aku terima lebih banyak berfokus pada kesalahan daripada pada kekuatan atau perkembangan positifku." },
-                                { label: "F", text: "Aku berharap guru lebih sering meluangkan waktu untuk berdiskusi denganku secara personal tentang perkembangan belajarku." }
-                            ]
-                        },
-                        {
-                            id: "E2.3",
-                            title: "E2.3 — Pengalaman dengan Program Remedial",
-                            context: "KSP mengatur murid berhak mengikuti remedial jika belum mencapai KKTP. Metode remediasi diharapkan berbeda dari cara mengajar sebelumnya.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu:",
-                            options: [
-                                { label: "A", text: "Aku pernah mengikuti remedial, dan cara guru mengajar dalam remedial berbeda dari cara sebelumnya — sehingga aku lebih paham." },
-                                { label: "B", text: "Remedial yang aku ikuti lebih banyak berupa mengulang soal yang sama atau materi yang sama, bukan cara baru yang berbeda." },
-                                { label: "C", text: "Aku merasa malu atau tidak nyaman mengikuti remedial karena terasa seperti \"ketahuan tidak bisa.\"" },
-                                { label: "D", text: "Setelah remedial, aku merasa benar-benar lebih memahami materi yang sebelumnya belum aku kuasai." },
-                                { label: "E", text: "Remedial dilaksanakan dengan terburu-buru karena waktu yang terbatas — hasilnya tidak selalu efektif." },
-                                { label: "F", text: "Aku tidak perlu mengikuti remedial selama TP ini karena sudah mencapai KKTP di semua mata pelajaran." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "E3",
-                    title: "E3. KEGIATAN KOKURIKULER DAN PENCAPAIAN PROFIL LULUSAN",
-                    questions: [
-                        {
-                            id: "E3.1",
-                            title: "E3.1 — Makna dan Dampak Tema Kokurikuler",
-                            context: "KSP mencantumkan tema kokurikuler: Bhinneka Tunggal Ika, Kearifan Lokal, Gaya Hidup Berkelanjutan, Kewirausahaan, Suara Demokrasi, dan Rekayasa Teknologi.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu:",
-                            options: [
-                                { label: "A", text: "Ada satu kegiatan kokurikuler yang benar-benar mengubah cara aku berpikir atau bertindak — aku bisa menceritakannya." },
-                                { label: "B", text: "Sebagian besar kegiatan kokurikuler terasa seperti tugas yang harus diselesaikan, bukan pengalaman yang benar-benar bermakna." },
-                                { label: "C", text: "Aku tahu bahwa kegiatan kokurikuler adalah salah satu syarat kenaikan kelasku — tetapi aku tidak selalu tahu hubungannya dengan profil lulusanku." },
-                                { label: "D", text: "Projek kokurikuler yang paling berkesan bagiku adalah yang melibatkan kerja nyata di luar kelas atau komunitas." },
-                                { label: "E", text: "Aku tidak selalu memahami tujuan atau manfaat jangka panjang dari setiap tema kokurikuler yang aku jalani." },
-                                { label: "F", text: "Guru pembimbing kokurikuler selalu mengaitkan kegiatan kami dengan tujuan pembelajaran dan perkembangan karakterku secara eksplisit." }
-                            ]
-                        },
-                        {
-                            id: "E3.2",
-                            title: "E3.2 — Dampak Program Live-in (Kelas X)",
-                            context: "KSP menyebutkan program Live-in (September, untuk Kelas X) — tinggal bersama masyarakat selama beberapa hari.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu (khusus murid Kelas X atau yang pernah mengikuti Live-in):",
-                            options: [
-                                { label: "A", text: "Live-in adalah pengalaman yang paling berkesan karena aku melihat kehidupan yang sangat berbeda dari kehidupanku sehari-hari." },
-                                { label: "B", text: "Pengalaman Live-in terasa kurang bermakna karena waktunya terlalu singkat untuk benar-benar merasakan kehidupan masyarakat." },
-                                { label: "C", text: "Setelah Live-in, guruku mengajak kelas untuk merefleksikan dan menghubungkan pengalaman tersebut dengan materi pelajaran." },
-                                { label: "D", text: "Setelah Live-in, tidak ada tindak lanjut yang terstruktur dari sekolah — pengalaman tersebut terasa berdiri sendiri." },
-                                { label: "E", text: "Live-in mengubah cara pandangku tentang keberagaman, kehidupan sederhana, atau hubungan antar manusia secara nyata." },
-                                { label: "F", text: "Aku merasa kurang siap atau tidak cukup dibriefing sebelum Live-in — sehingga aku tidak tahu apa yang harus aku amati atau pelajari." }
-                            ]
-                        },
-                        {
-                            id: "E3.3",
-                            title: "E3.3 — Program My Best Character: Bermakna atau Formalitas?",
-                            context: "KSP menyebutkan program My Best Character (1 kali per minggu) — refleksi karakter melalui antar teman, guru, dan tim karakter sekolah.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu:",
-                            options: [
-                                { label: "A", text: "My Best Character adalah program yang benar-benar membantuku melihat sisi positif diriku yang kadang tidak aku sadari." },
-                                { label: "B", text: "Program ini terasa formalitas — aku mengisi atau mengikutinya karena diwajibkan, bukan karena benar-benar bermakna." },
-                                { label: "C", text: "Umpan balik dari teman dalam My Best Character kadang terasa tidak jujur — orang cenderung menulis hal-hal baik saja." },
-                                { label: "D", text: "Ada momen dalam program My Best Character yang benar-benar membuatku berpikir atau merenungkan tindakanku." },
-                                { label: "E", text: "Frekuensi satu kali per minggu sudah cukup untuk program refleksi seperti ini." },
-                                { label: "F", text: "Aku berharap program ini lebih personal dan mendalam, bukan hanya pengisian formulir refleksi rutin." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "E4",
-                    title: "E4. LAYANAN INKLUSIF DAN DIFERENSIASI",
-                    questions: [
-                        {
-                            id: "E4.1",
-                            title: "E4.1 — Layanan untuk Murid Cerdas Istimewa (Kelas Science Technology)",
-                            context: "KSP menyebutkan untuk siswa Cerdas Istimewa disediakan kelas Science Technology dengan jam tambahan untuk Fisika, Kimia, Biologi, dan Informatika.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu (khusus murid Kelas Science Technology atau yang mengenalnya):",
-                            options: [
-                                { label: "A", text: "Kelas Science Technology benar-benar memfasilitasi minat dan kemampuanku di bidang sains — aku merasa ditantang dan berkembang." },
-                                { label: "B", text: "Jam tambahan di Kelas Science Technology terasa seperti beban tambahan, bukan pengayaan yang bermakna." },
-                                { label: "C", text: "Materi di kelas Science Technology lebih mendalam atau lebih menantang dibanding kelas reguler — ada perbedaan yang nyata." },
-                                { label: "D", text: "Ada aspek dari layanan Kelas Science Technology yang masih kurang — aku bisa menyebutkan apa yang perlu diperbaiki." },
-                                { label: "E", text: "Pemilihan murid untuk masuk Kelas Science Technology dilakukan secara transparan dan menggunakan kriteria yang jelas." },
-                                { label: "F", text: "Aku tidak merasa ada perbedaan perlakuan yang signifikan antara murid Kelas Science Technology dan murid di kelas reguler dari sisi perhatian guru." }
-                            ]
-                        },
-                        {
-                            id: "E4.2",
-                            title: "E4.2 — Program Matrikulasi untuk Murid dari Daerah 3T",
-                            context: "KSP menyebutkan murid dari daerah 3T mendapat matrikulasi oleh guru dan siswa mentor di asrama pada malam hari.",
-                            instruction: "Pilih semua yang sesuai dengan pengalamanmu (khusus murid yang mengikuti matrikulasi atau menjadi mentor):",
-                            options: [
-                                { label: "A", text: "Matrikulasi sangat membantu aku mengikuti pelajaran yang sebelumnya terasa sangat sulit ketika pertama kali datang ke SMAKINDO." },
-                                { label: "B", text: "Materi yang dipelajari dalam matrikulasi relevan dengan pelajaran yang ada di kelas — tidak terasa seperti mengulang dari awal." },
-                                { label: "C", text: "Mentor yang membantu di matrikulasi sudah cukup terlatih dan sabar dalam menjelaskan materi." },
-                                { label: "D", text: "Waktu malam hari untuk matrikulasi terasa berat karena aku sudah lelah setelah seharian berkegiatan." },
-                                { label: "E", text: "Frekuensi 2 kali per minggu belum cukup untuk mengejar ketertinggalan yang aku rasakan." },
-                                { label: "F", text: "Ada hal dalam program matrikulasi yang perlu diperbaiki — aku bisa menyebutkannya secara spesifik." }
+                                { label: "A", text: "Ada mata pelajaran yang terasa berhubungan dengan kehidupan sehari-hariku." },
+                                { label: "B", text: "Sebagian besar pelajaran terasa jauh dari kehidupan nyataku." },
+                                { label: "C", text: "Keterkaitan lebih sering terasa di kokurikuler daripada di kelas." },
+                                { label: "D", text: "Ada pelajaran yang terasa tidak relevan dengan kehidupanku." },
+                                { label: "E", text: "Guru mengaitkan materi dengan contoh nyata, tapi tidak selalu dekat." },
+                                { label: "F", text: "Aku pernah bertanya dan guru memberikan alasan yang meyakinkan." }
                             ]
                         }
                     ]
@@ -1607,7 +638,7 @@ function doGet(e) {
         F: {
             title: "SEGMEN F — ORANG TUA MURID",
             subtitle: "SMA Kristen Indonesia Magelang (SMAKINDO) — TP 2025/2026",
-            instruction: "Pilih semua pernyataan yang benar-benar mencerminkan pengalaman dan pendapat Anda sebagai orang tua murid SMAKINDO. Anda boleh memilih lebih dari satu opsi dalam setiap pertanyaan. Tidak ada jawaban \"benar\" atau \"salah\" — yang dicari adalah gambaran yang jujur tentang pengalaman Anda berinteraksi dengan sekolah dan perkembangan anak Anda.",
+            instruction: "Pilih semua yang mencerminkan pengalaman Anda sebagai orang tua.",
             sections: [
                 {
                     id: "F1",
@@ -1615,106 +646,16 @@ function doGet(e) {
                     questions: [
                         {
                             id: "F1.1",
-                            title: "F1.1 — Jalur dan Kualitas Informasi tentang Kurikulum dan Program Sekolah",
-                            context: "KSP menyebutkan bahwa salah satu tujuannya adalah memberikan informasi kepada masyarakat, terutama orang tua, untuk memahami arah penyelenggaraan pendidikan di SMAKINDO.",
+                            title: "F1.1 — Jalur dan Kualitas Informasi tentang Kurikulum",
+                            context: "KSP menyebutkan tujuan memberikan informasi kepada orang tua.",
                             instruction: "Pilih semua yang mencerminkan pengalaman Anda:",
                             options: [
-                                { label: "A", text: "Saya mendapatkan informasi tentang program dan kurikulum sekolah terutama melalui grup WhatsApp wali kelas atau kepala sekolah." },
-                                { label: "B", text: "Informasi yang saya terima lebih banyak bersifat pengumuman kegiatan, bukan penjelasan tentang tujuan atau arah kurikulum yang dijalankan." },
-                                { label: "C", text: "Saya tidak selalu mengerti istilah atau konsep kurikulum yang disebutkan sekolah (misalnya: P5, ATP, Profil Pelajar Pancasila) — bahasa sekolah terasa teknis." },
-                                { label: "D", text: "Ada pertemuan atau forum yang cukup mewadahi saya untuk menanyakan hal-hal tentang kurikulum dan mendapat penjelasan yang memuaskan." },
-                                { label: "E", text: "Saya lebih banyak mendapatkan informasi tentang kondisi anak saya dari anak itu sendiri daripada dari laporan atau komunikasi resmi sekolah." },
-                                { label: "F", text: "Sekolah proaktif menginformasikan perkembangan program atau perubahan kurikulum kepada orang tua — bukan hanya ketika ada masalah." }
-                            ]
-                        },
-                        {
-                            id: "F1.2",
-                            title: "F1.2 — Pengalaman Mengisi Kuesioner Evaluasi Orang Tua",
-                            context: "KSP menyebutkan kuesioner orang tua akan diisi pada Oktober 2025 dan April 2026, dikoordinir oleh wali kelas.",
-                            instruction: "Pilih semua yang mencerminkan pengalaman Anda:",
-                            options: [
-                                { label: "A", text: "Saya sudah mengisi kuesioner orang tua yang dikirimkan sekolah." },
-                                { label: "B", text: "Saya tidak menerima atau tidak mengisi kuesioner — kuesioner tersebut tidak sampai kepada saya." },
-                                { label: "C", text: "Pertanyaan dalam kuesioner mencerminkan hal-hal yang benar-benar ingin saya sampaikan sebagai orang tua." },
-                                { label: "D", text: "Pertanyaan dalam kuesioner terasa terlalu umum — tidak menyentuh hal-hal spesifik yang menjadi perhatian utama saya." },
-                                { label: "E", text: "Setelah mengisi kuesioner, saya tidak pernah mendapat umpan balik dari sekolah tentang apa yang dilakukan berdasarkan hasil kuesioner tersebut." },
-                                { label: "F", text: "Saya meragukan bahwa hasil kuesioner benar-benar dibaca dan digunakan untuk perbaikan — terasa hanya sebagai formalitas administratif." }
-                            ]
-                        },
-                        {
-                            id: "F1.3",
-                            title: "F1.3 — Kualitas Laporan Kemajuan Belajar Anak",
-                            context: "KSP mengatur bahwa laporan kemajuan belajar disusun oleh pendidik dan disampaikan kepada peserta didik dan orang tua secara berkala.",
-                            instruction: "Pilih semua yang mencerminkan pengalaman Anda:",
-                            options: [
-                                { label: "A", text: "Laporan yang saya terima lebih banyak berisi nilai angka dan deskripsi singkat yang tidak memberikan gambaran nyata tentang perkembangan anak saya." },
-                                { label: "B", text: "Ada informasi dalam laporan yang benar-benar membantu saya memahami kekuatan dan tantangan belajar anak saya secara spesifik." },
-                                { label: "C", text: "Saya merasa perlu menghubungi wali kelas atau guru untuk mendapatkan penjelasan tambahan tentang isi laporan yang saya terima." },
-                                { label: "D", text: "Laporan kemajuan belajar disampaikan tepat waktu sesuai jadwal yang dijanjikan sekolah." },
-                                { label: "E", text: "Saya tidak sepenuhnya memahami sistem penilaian yang digunakan di SMAKINDO — laporan tidak menjelaskannya dengan cukup jelas." },
-                                { label: "F", text: "Saya berharap laporan kemajuan belajar anak saya juga mencakup informasi tentang perkembangan karakter dan sosial-emosional, bukan hanya akademik." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "F2",
-                    title: "F2. PERSEPSI TERHADAP PROGRAM SEKOLAH",
-                    questions: [
-                        {
-                            id: "F2.1",
-                            title: "F2.1 — Perubahan Nyata pada Anak Sesuai Visi Sekolah",
-                            context: "KSP menyebutkan SMAKINDO adalah sekolah berasrama yang bertujuan menumbuhkan anak secara Iman, Ilmu, dan Pelayanan.",
-                            instruction: "Pilih semua yang mencerminkan pengalaman Anda:",
-                            options: [
-                                { label: "A", text: "Saya melihat perubahan positif pada anak saya dalam hal kemandirian sejak bersekolah di SMAKINDO." },
-                                { label: "B", text: "Saya melihat pertumbuhan iman yang nyata pada anak saya — cara dia berbicara tentang nilai-nilai kristiani atau kehidupan rohaninya berubah." },
-                                { label: "C", text: "Saya belum melihat perubahan signifikan yang dapat saya kaitkan langsung dengan program sekolah selama TP ini." },
-                                { label: "D", text: "Perubahan yang paling terlihat pada anak saya adalah dalam kedisiplinan dan kemampuan mengatur waktu — bukan pada aspek akademik." },
-                                { label: "E", text: "Anak saya tampak lelah atau tertekan saat libur — yang membuat saya khawatir tentang keseimbangan di sekolah berasrama." },
-                                { label: "F", text: "Saya merasa SMAKINDO berhasil membangun karakter anak saya, meskipun hasilnya tidak selalu terlihat dalam prestasi akademik." }
-                            ]
-                        },
-                        {
-                            id: "F2.2",
-                            title: "F2.2 — Dampak Program Pengembangan Diri yang Dirasakan di Rumah",
-                            context: "KSP menyebutkan program: Kambium (kerohanian), Live-in, Pendidikan Karakter (pelayanan gereja), dan Class Meeting.",
-                            instruction: "Pilih semua yang mencerminkan pengalaman Anda:",
-                            options: [
-                                { label: "A", text: "Program Kambium (kerohanian) terlihat berdampak pada cara anak saya berbicara tentang iman dan nilai-nilai kristiani saat di rumah." },
-                                { label: "B", text: "Program Live-in membuat anak saya lebih peka terhadap kehidupan orang yang berbeda latar belakang — saya merasakannya saat anak saya bercerita." },
-                                { label: "C", text: "Program Pendidikan Karakter (pelayanan gereja) menanamkan rasa empati dan kemauan melayani yang nyata pada anak saya." },
-                                { label: "D", text: "Saya tidak mendapat cukup informasi tentang program-program tersebut — saya hanya tahu dari cerita anak saya." },
-                                { label: "E", text: "Saya sulit menilai dampak program-program tersebut karena saya jarang bertemu anak saya akibat jarak dan sistem berasrama." },
-                                { label: "F", text: "Dari semua program yang disebutkan, Class Meeting adalah yang paling sedikit berdampak terlihat bagi saya sebagai orang tua." }
-                            ]
-                        },
-                        {
-                            id: "F2.3",
-                            title: "F2.3 — Persepsi tentang Kemampuan Numerasi Anak dan Dukungan Sekolah",
-                            context: "KSP mengakui kemampuan Numerasi murid masih di level \"Sedang\" (Rapor Pendidikan 2024), khususnya di domain Aljabar.",
-                            instruction: "Pilih semua yang mencerminkan pengalaman Anda:",
-                            options: [
-                                { label: "A", text: "Saya melihat anak saya kesulitan dengan Matematika — terutama bagian yang berkaitan dengan aljabar atau soal berpikir tingkat tinggi." },
-                                { label: "B", text: "Anak saya tidak pernah bercerita tentang kesulitan belajar Matematika secara spesifik — saya tidak mengetahui kondisi sebenarnya." },
-                                { label: "C", text: "Sekolah belum pernah memberi tahu saya secara spesifik tentang kelemahan anak saya di bidang Numerasi atau memberikan saran konkret apa yang bisa saya bantu di rumah." },
-                                { label: "D", text: "Saya berharap ada panduan atau materi dari sekolah yang dapat saya gunakan untuk mendukung pembelajaran anak saya di rumah, terutama di bidang Matematika." },
-                                { label: "E", text: "Anak saya mendapat bantuan belajar tambahan di luar sekolah (les privat, bimbel) karena saya merasa dukungan dari sekolah belum cukup." },
-                                { label: "F", text: "Saya puas dengan cara sekolah menangani kelemahan Numerasi murid — ada perkembangan yang dapat saya lihat pada anak saya." }
-                            ]
-                        },
-                        {
-                            id: "F2.4",
-                            title: "F2.4 — Efektivitas Pertemuan Orang Tua dan Sekolah",
-                            context: "KSP menyebutkan pertemuan antara sekolah dan wakil orang tua dijadwalkan pada November 2025 dan Mei 2026.",
-                            instruction: "Pilih semua yang mencerminkan pengalaman Anda:",
-                            options: [
-                                { label: "A", text: "Saya menghadiri pertemuan yang dijadwalkan dan merasa forum tersebut cukup memberi ruang bagi saya untuk menyampaikan pendapat." },
-                                { label: "B", text: "Pertemuan dengan sekolah terasa seperti sesi informasi satu arah — sekolah menyampaikan program, dan orang tua lebih banyak mendengar." },
-                                { label: "C", text: "Saya tidak dapat hadir pada pertemuan yang dijadwalkan karena kendala jarak atau waktu — dan sekolah belum menyediakan alternatif format yang memadai." },
-                                { label: "D", text: "Ada topik penting yang ingin saya angkat dalam pertemuan berikutnya tetapi saya tidak yakin apakah forum tersebut adalah tempat yang tepat untuk membahasnya." },
-                                { label: "E", text: "Setelah pertemuan, ada tindak lanjut nyata dari sekolah berdasarkan masukan yang disampaikan orang tua." },
-                                { label: "F", text: "Format pertemuan dua kali per tahun tidak cukup untuk membangun komunikasi yang bermakna antara orang tua dan sekolah." }
+                                { label: "A", text: "Saya mendapat informasi terutama melalui grup WhatsApp." },
+                                { label: "B", text: "Informasi lebih banyak pengumuman kegiatan, bukan penjelasan kurikulum." },
+                                { label: "C", text: "Saya tidak selalu mengerti istilah kurikulum yang digunakan sekolah." },
+                                { label: "D", text: "Ada forum yang cukup untuk menanyakan hal tentang kurikulum." },
+                                { label: "E", text: "Saya lebih banyak dapat info dari anak daripada dari sekolah." },
+                                { label: "F", text: "Sekolah proaktif menginformasikan perkembangan program." }
                             ]
                         }
                     ]
@@ -1722,9 +663,9 @@ function doGet(e) {
             ]
         },
         G: {
-            title: "SEGMEN G — YAYASAN PERGURUAN KRISTEN INDONESIA (YPKI)",
+            title: "SEGMEN G — YAYASAN (YPKI)",
             subtitle: "SMA Kristen Indonesia Magelang (SMAKINDO) — TP 2025/2026",
-            instruction: "Pilih semua pernyataan yang benar-benar mencerminkan posisi dan kondisi aktual Yayasan dalam kaitannya dengan SMAKINDO. Anda boleh memilih lebih dari satu opsi dalam setiap pertanyaan. Tidak ada jawaban \"benar\" atau \"salah\" — yang dicari adalah gambaran yang paling jujur tentang peran dan kapasitas Yayasan sebagai penyelenggara pendidikan.",
+            instruction: "Pilih semua yang mencerminkan posisi aktual Yayasan.",
             sections: [
                 {
                     id: "G1",
@@ -1732,126 +673,16 @@ function doGet(e) {
                     questions: [
                         {
                             id: "G1.1",
-                            title: "G1.1 — Ketercerminan Arah Strategis YPKI dalam KSP 2025/2026",
-                            context: "KSP menyebutkan slogan \"Berakar dalam Iman, Bertumbuh dalam Pengharapan dan Berbuah dalam Hidup\" serta visi \"Terwujudnya Sekolah Kristen Yang Peduli, Kreatif, Bertanggung Jawab Dalam Iman, Ilmu Dan Pelayanan.\"",
+                            title: "G1.1 — Ketercerminan Arah Strategis YPKI dalam KSP",
+                            context: "KSP menyebutkan slogan dan visi sekolah.",
                             instruction: "Pilih semua yang mencerminkan posisi aktual Yayasan:",
                             options: [
-                                { label: "A", text: "KSP 2025/2026 sudah mencerminkan arah strategis YPKI dengan memadai — tidak ada aspek misi yayasan yang hilang dari dokumen tersebut." },
-                                { label: "B", text: "Ada aspek dari misi yayasan (misalnya: pembinaan spiritual yang mendalam, pelayanan ke komunitas, atau standar akademik tertentu) yang belum cukup tercermin dalam KSP." },
-                                { label: "C", text: "Yayasan belum pernah secara formal mengevaluasi apakah KSP SMAKINDO mencerminkan misi yayasan — penilaian dilakukan secara informal." },
-                                { label: "D", text: "KSP SMAKINDO lebih banyak mencerminkan kebutuhan administratif Kemendikbudristek daripada arah strategis YPKI secara spesifik." },
-                                { label: "E", text: "Yayasan memiliki dokumen arah strategis (Rencana Strategis/Renstra) yang secara eksplisit menjadi acuan penyusunan KSP." },
-                                { label: "F", text: "Visi dan slogan dalam KSP sudah digunakan cukup lama — perlu ada kajian apakah masih relevan dengan konteks pendidikan kristen saat ini." }
-                            ]
-                        },
-                        {
-                            id: "G1.2",
-                            title: "G1.2 — Bentuk Konkret Keterlibatan Yayasan dalam Penyusunan KSP",
-                            context: "KSP menyebutkan Yayasan sebagai salah satu pihak yang terlibat dalam pengembangan KSP bersama kepala sekolah, guru, dan komite.",
-                            instruction: "Pilih semua yang mencerminkan kondisi aktual:",
-                            options: [
-                                { label: "A", text: "Keterlibatan Yayasan dalam penyusunan KSP 2025/2026 terbatas pada pembubuhan tanda tangan atau pengesahan formal." },
-                                { label: "B", text: "Yayasan memberikan masukan substantif terhadap konten KSP — misalnya: arah prioritas program, kebijakan pendidikan, atau standar nilai kristiani yang harus ada." },
-                                { label: "C", text: "Yayasan tidak hadir dalam workshop penyusunan KSP (19 Juni 2025), tetapi memberikan persetujuan setelah dokumen selesai." },
-                                { label: "D", text: "Ada mekanisme formal untuk Yayasan mengkomunikasikan prioritas atau kebijakan kepada kepala sekolah sebelum KSP disusun." },
-                                { label: "E", text: "Yayasan menerima salinan KSP tetapi tidak selalu membaca atau mengkaji isinya secara mendalam sebelum mengesahkan." },
-                                { label: "F", text: "Keterlibatan Yayasan dalam penyusunan KSP sudah meningkat dibandingkan tahun sebelumnya — ada perubahan nyata dalam pola keterlibatan." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "G2",
-                    title: "G2. DUKUNGAN SUMBER DAYA",
-                    questions: [
-                        {
-                            id: "G2.1",
-                            title: "G2.1 — Rencana Konkret Mengatasi Keterbatasan Infrastruktur",
-                            context: "KSP mengakui: bangunan tua, laboratorium belum standar, asrama menyatu dengan gedung, tidak ada tenaga laboran — dan menyebut \"membutuhkan penanganan dan perhatian khusus.\"",
-                            instruction: "Pilih semua yang mencerminkan kondisi aktual Yayasan:",
-                            options: [
-                                { label: "A", text: "Yayasan memiliki rencana tindak lanjut tertulis (jangka pendek dan menengah) untuk mengatasi keterbatasan infrastruktur yang disebutkan dalam KSP." },
-                                { label: "B", text: "Rencana perbaikan infrastruktur sudah pernah diusulkan kepada Yayasan oleh kepala sekolah, tetapi belum mendapat persetujuan anggaran." },
-                                { label: "C", text: "Keterbatasan infrastruktur SMAKINDO sudah diakui selama lebih dari dua tahun tanpa ada perubahan signifikan dalam alokasi anggaran." },
-                                { label: "D", text: "Yayasan memiliki keterbatasan finansial yang nyata — perbaikan infrastruktur bukan karena tidak mau, tetapi karena kapasitas anggaran yang terbatas." },
-                                { label: "E", text: "Ada sumber pendanaan eksternal (hibah, donasi, kemitraan) yang sedang dijajaki oleh Yayasan untuk mengatasi keterbatasan infrastruktur." },
-                                { label: "F", text: "Kondisi \"asrama yang menyatu dengan gedung sekolah\" bukan prioritas perbaikan Yayasan saat ini karena dianggap masih berfungsi memadai." }
-                            ]
-                        },
-                        {
-                            id: "G2.2",
-                            title: "G2.2 — Dukungan Yayasan terhadap Rekrutmen dan Sertifikasi Guru",
-                            context: "KSP mencatat hanya 29% guru bersertifikat, dan banyak guru mengampu multi-mapel. Yayasan disebut sebagai salah satu fasilitator pengembangan profesional.",
-                            instruction: "Pilih semua yang mencerminkan kondisi aktual:",
-                            options: [
-                                { label: "A", text: "Yayasan mengalokasikan anggaran khusus untuk mendukung proses sertifikasi guru (PPG, PMM, atau setara)." },
-                                { label: "B", text: "Yayasan belum memberikan dukungan finansial yang signifikan untuk sertifikasi guru — guru lebih banyak mengandalkan jalur pemerintah." },
-                                { label: "C", text: "Rekrutmen guru baru untuk mengurangi beban multi-mapel sudah masuk dalam rencana Yayasan dalam dua tahun ke depan." },
-                                { label: "D", text: "Kondisi 71% guru tanpa sertifikat bukan hanya masalah administratif — berdampak pada tunjangan dan kesejahteraan yang mempengaruhi motivasi guru." },
-                                { label: "E", text: "Yayasan memiliki mekanisme untuk memantau kondisi ketenagaan SMAKINDO secara berkala, bukan hanya menerima laporan tahunan." },
-                                { label: "F", text: "Kebijakan kompensasi dan pengembangan karir guru di bawah naungan YPKI sudah cukup kompetitif untuk mempertahankan guru berkualitas di SMAKINDO." }
-                            ]
-                        },
-                        {
-                            id: "G2.3",
-                            title: "G2.3 — Investasi Yayasan dalam Pengembangan Profesional Guru TP 2025/2026",
-                            context: "KSP menyebutkan pengembangan profesional difasilitasi oleh Yayasan, Perguruan Tinggi, dan Kemendikbudristek melalui PMM.",
-                            instruction: "Pilih semua yang mencerminkan kondisi aktual:",
-                            options: [
-                                { label: "A", text: "Yayasan membiayai atau memfasilitasi setidaknya satu pelatihan atau workshop untuk guru SMAKINDO dalam TP 2025/2026 yang dapat disebutkan secara spesifik." },
-                                { label: "B", text: "Sebagian besar pengembangan profesional guru SMAKINDO dibiayai oleh Kemendikbudristek (PMM, PKB) — bukan oleh Yayasan." },
-                                { label: "C", text: "Anggaran Yayasan untuk pengembangan profesional guru di SMAKINDO dapat disebutkan nominalnya — bukan hanya dikatakan \"ada.\"" },
-                                { label: "D", text: "Yayasan mengharapkan kepala sekolah mencari sendiri peluang pelatihan bagi guru — Yayasan lebih berperan sebagai pemberi izin daripada fasilitator aktif." },
-                                { label: "E", text: "Ada kemitraan formal antara YPKI dan Perguruan Tinggi tertentu (selain UKSW) untuk pengembangan kompetensi guru SMAKINDO secara berkelanjutan." },
-                                { label: "F", text: "Yayasan belum pernah mengevaluasi dampak dari pelatihan yang sudah dibiayai terhadap peningkatan kualitas pembelajaran di SMAKINDO." }
-                            ]
-                        }
-                    ]
-                },
-                {
-                    id: "G3",
-                    title: "G3. EVALUASI DAN PENJAMINAN MUTU",
-                    questions: [
-                        {
-                            id: "G3.1",
-                            title: "G3.1 — Mekanisme Evaluasi Eksternal atau Audit Kurikulum oleh Yayasan",
-                            context: "KSP menyatakan evaluasi KSP dilakukan secara internal oleh Kepala Sekolah. Tidak disebutkan adanya mekanisme evaluasi dari Yayasan.",
-                            instruction: "Pilih semua yang mencerminkan kondisi aktual:",
-                            options: [
-                                { label: "A", text: "Yayasan memiliki mekanisme evaluasi independen (audit kurikulum, kunjungan penjaminan mutu, atau survei mutu) yang dilakukan secara rutin terhadap SMAKINDO." },
-                                { label: "B", text: "Evaluasi mutu oleh Yayasan lebih bersifat informal (misalnya: diskusi dengan kepala sekolah, laporan berkala) daripada audit terstruktur." },
-                                { label: "C", text: "Yayasan belum pernah melakukan audit kurikulum secara mandiri terhadap SMAKINDO — evaluasi sepenuhnya diserahkan kepada kepala sekolah dan pengawas Dinas." },
-                                { label: "D", text: "Ada sistem pelaporan mutu yang reguler dari kepala sekolah kepada Yayasan yang mencakup indikator kinerja yang terstandar." },
-                                { label: "E", text: "Yayasan menggunakan hasil Rapor Pendidikan (dari Kemendikbudristek) sebagai satu-satunya sumber data untuk menilai mutu SMAKINDO." },
-                                { label: "F", text: "Yayasan berencana untuk mengembangkan mekanisme penjaminan mutu internal yang lebih terstruktur dalam dua tahun ke depan." }
-                            ]
-                        },
-                        {
-                            id: "G3.2",
-                            title: "G3.2 — Pengintegrasian Temuan Evaluasi ke dalam Penyempurnaan KSP",
-                            context: "Tidak ada informasi dalam KSP tentang bagaimana temuan evaluasi Yayasan diintegrasikan ke perbaikan dokumen KSP.",
-                            instruction: "Pilih semua yang mencerminkan kondisi aktual:",
-                            options: [
-                                { label: "A", text: "Ada siklus yang jelas antara evaluasi Yayasan dan revisi KSP — temuan evaluasi secara nyata mengubah konten KSP berikutnya." },
-                                { label: "B", text: "Rekomendasi atau masukan Yayasan terhadap KSP lebih banyak disampaikan secara lisan dan tidak selalu didokumentasikan." },
-                                { label: "C", text: "Kepala sekolah menyusun KSP secara mandiri — Yayasan tidak terlibat dalam proses penyempurnaan berdasarkan evaluasi." },
-                                { label: "D", text: "Belum ada satu pun rekomendasi dari Yayasan yang dapat dilacak secara eksplisit sebagai perubahan dalam KSP 2025/2026." },
-                                { label: "E", text: "Yayasan berencana untuk lebih aktif dalam siklus evaluasi-perbaikan KSP mulai TP berikutnya — ada komitmen yang sedang dirumuskan." },
-                                { label: "F", text: "Yayasan menganggap KSP yang ada sudah memenuhi standar minimum yang dibutuhkan — tidak ada urgensi untuk meningkatkan kualitasnya secara signifikan." }
-                            ]
-                        },
-                        {
-                            id: "G3.3",
-                            title: "G3.3 — Posisi Yayasan terhadap Risiko-risiko Kritis yang Diidentifikasi dalam KSP",
-                            context: "KSP mengidentifikasi beberapa risiko: laboratorium tidak standar, tenaga perpustakaan hampir purna tugas, tidak ada laboran, 71% guru tidak bersertifikat, bangunan tua.",
-                            instruction: "Pilih semua yang mencerminkan posisi Yayasan saat ini:",
-                            options: [
-                                { label: "A", text: "Yayasan sudah memprioritaskan penanganan minimal satu risiko kritis yang disebutkan di atas dalam agenda kerja TP ini." },
-                                { label: "B", text: "Yayasan menyadari semua risiko tersebut, tetapi belum memiliki rencana tindak lanjut yang konkret dan berjangka waktu untuk mengatasinya." },
-                                { label: "C", text: "Risiko yang paling mengkhawatirkan Yayasan adalah kesinambungan tenaga perpustakaan — ada langkah yang sedang diambil." },
-                                { label: "D", text: "Yayasan menganggap beberapa kondisi tersebut (misalnya: bangunan tua, tidak ada laboran) sebagai kondisi yang \"bisa dikelola\" tanpa perbaikan mendesak." },
-                                { label: "E", text: "Keterbatasan finansial Yayasan adalah hambatan utama yang membuat risiko-risiko ini belum dapat ditangani secara komprehensif." },
-                                { label: "F", text: "Yayasan berharap sekolah lebih proaktif mencari sumber dana eksternal (dari pemerintah atau donasi) untuk mengatasi keterbatasan yang ada." }
+                                { label: "A", text: "KSP sudah mencerminkan arah strategis YPKI dengan memadai." },
+                                { label: "B", text: "Ada aspek misi yayasan yang belum cukup tercermin dalam KSP." },
+                                { label: "C", text: "Yayasan belum pernah secara formal evaluasi KSP." },
+                                { label: "D", text: "KSP lebih mencerminkan kebutuhan administratif Kemendikbudristek." },
+                                { label: "E", text: "Yayasan memiliki Renstra yang menjadi acuan KSP." },
+                                { label: "F", text: "Visi dan slogan sudah digunakan lama — perlu kajian ulang." }
                             ]
                         }
                     ]
@@ -1861,13 +692,11 @@ function doGet(e) {
     };
 
     // ============================================
-    // PAGE NAVIGATION
+    // NAVIGATION FUNCTIONS
     // ============================================
 
     function showPage(pageId) {
-        document.querySelectorAll('#app > .container > div').forEach(el => {
-            el.classList.add('hidden');
-        });
+        document.querySelectorAll('#app > .container > div').forEach(el => el.classList.add('hidden'));
         document.getElementById('page-' + pageId).classList.remove('hidden');
         state.currentPage = pageId;
     }
@@ -1875,7 +704,6 @@ function doGet(e) {
     function switchLoginTab(tab) {
         document.querySelectorAll('#page-login .tab').forEach(t => t.classList.remove('active'));
         event.target.classList.add('active');
-        
         if (tab === 'respondent') {
             document.getElementById('login-respondent').classList.remove('hidden');
             document.getElementById('login-admin').classList.add('hidden');
@@ -1888,18 +716,13 @@ function doGet(e) {
     function switchAdminTab(tab) {
         document.querySelectorAll('#admin-tabs .tab').forEach(t => t.classList.remove('active'));
         event.target.classList.add('active');
-        
         document.getElementById('admin-respondents').classList.add('hidden');
         document.getElementById('admin-results').classList.add('hidden');
         document.getElementById('admin-settings').classList.add('hidden');
-        
         document.getElementById('admin-' + tab).classList.remove('hidden');
-        
         if (tab === 'results') renderResults();
         if (tab === 'respondents') renderRespondents();
-        if (tab === 'settings') {
-            document.getElementById('gdrive-url').value = state.gdriveUrl || '';
-        }
+        if (tab === 'settings') document.getElementById('gdrive-url').value = state.gdriveUrl || '';
     }
 
     // ============================================
@@ -1918,14 +741,14 @@ function doGet(e) {
         if (!respondent) {
             showModal(`
                 <h3>👋 Selamat Datang, ${name}!</h3>
-                <p class="mb-4">Anda belum terdaftar dalam sistem. Silakan pilih segmen survey Anda:</p>
+                <p class="mb-4">Anda belum terdaftar. Silakan pilih segmen survey:</p>
                 <div class="form-group">
                     <select id="modal-segment">
                         <option value="A">Segmen A - Kepala Satuan Pendidikan</option>
-                        <option value="B">Segmen B - Wakil Kepala Bidang Kurikulum</option>
+                        <option value="B">Segmen B - Wakil Kepala Kurikulum</option>
                         <option value="C">Segmen C - Pendidik (Guru)</option>
                         <option value="D">Segmen D - Tenaga Kependidikan</option>
-                        <option value="E">Segmen E - Murid (Peserta Didik)</option>
+                        <option value="E">Segmen E - Murid</option>
                         <option value="F">Segmen F - Orang Tua Murid</option>
                         <option value="G">Segmen G - Yayasan (YPKI)</option>
                     </select>
@@ -1952,7 +775,6 @@ function doGet(e) {
             createdAt: new Date().toISOString(),
             lastModified: new Date().toISOString()
         };
-        
         state.respondents.push(respondent);
         state.currentUser = respondent;
         state.isAdmin = false;
@@ -1964,7 +786,6 @@ function doGet(e) {
     function loginAdmin() {
         const user = document.getElementById('admin-user').value.trim();
         const pass = document.getElementById('admin-pass').value;
-        
         if (user === ADMIN_CREDENTIALS.username && pass === ADMIN_CREDENTIALS.password) {
             state.isAdmin = true;
             state.currentUser = null;
@@ -1986,29 +807,42 @@ function doGet(e) {
         state.currentUser = null;
         state.isAdmin = false;
         showPage('login');
-        showAlert('Progress Anda telah tersimpan. Anda dapat melanjutkan kapan saja.', 'success');
+        showAlert('Progress tersimpan. Anda dapat melanjutkan kapan saja.', 'success');
     }
 
     // ============================================
-    // SURVEY RENDERING
+    // SURVEY FUNCTIONS
     // ============================================
 
     function startSurvey() {
         showPage('survey');
         const user = state.currentUser;
         
+        // CEK: Apakah sudah pernah submit?
+        if (user.alreadySubmitted || user.status === 'completed') {
+            showModal(`
+                <h3>ℹ️ Survey Sudah Diisi</h3>
+                <p class="mb-4">Halo <strong>${user.name}</strong>,</p>
+                <div class="alert alert-info">
+                    Anda sudah menyelesaikan survey ini pada:<br>
+                    <strong>${new Date(user.submittedAt).toLocaleString('id-ID')}</strong><br><br>
+                    Survey tidak dapat diisi ulang.
+                </div>
+                <div class="btn-group" style="justify-content:center;">
+                    <button class="btn btn-primary" onclick="finishSurvey()">Selesai</button>
+                </div>
+            `);
+            return;
+        }
+        
         document.getElementById('survey-user-name').textContent = user.name;
         const segmentNames = {
-            A: 'Kepala Satuan Pendidikan',
-            B: 'Wakil Kepala Bidang Kurikulum',
-            C: 'Pendidik (Guru)',
-            D: 'Tenaga Kependidikan',
-            E: 'Murid (Peserta Didik)',
-            F: 'Orang Tua Murid',
+            A: 'Kepala Satuan Pendidikan', B: 'Wakil Kepala Kurikulum',
+            C: 'Pendidik (Guru)', D: 'Tenaga Kependidikan',
+            E: 'Murid (Peserta Didik)', F: 'Orang Tua Murid',
             G: 'Yayasan (YPKI)'
         };
         document.getElementById('survey-user-segment').textContent = `Segmen ${user.segment} — ${segmentNames[user.segment]}`;
-        
         renderSurveyContent(user.segment);
         updateProgress();
     }
@@ -2029,13 +863,10 @@ function doGet(e) {
         `;
 
         data.sections.forEach(section => {
-            html += `<div class="card">`;
-            html += `<div class="section-title">${section.title}</div>`;
-            
+            html += `<div class="card"><div class="section-title">${section.title}</div>`;
             section.questions.forEach(question => {
                 const questionKey = question.id;
                 const savedAnswers = answers[questionKey] || [];
-                
                 html += `
                     <div class="question-block">
                         <div class="question-text">${question.title}</div>
@@ -2043,60 +874,44 @@ function doGet(e) {
                         <p style="font-size:0.9em; color:var(--gray-500); margin-bottom:12px;">${question.instruction}</p>
                         <ul class="options-list">
                 `;
-                
                 question.options.forEach(option => {
                     const isChecked = savedAnswers.includes(option.label) ? 'checked' : '';
                     const optionId = `${questionKey}_${option.label}`;
                     html += `
                         <li class="option-item">
                             <input type="checkbox" id="${optionId}" 
-                                data-question="${questionKey}" 
-                                data-option="${option.label}"
-                                ${isChecked}
-                                onchange="handleAnswerChange()">
+                                data-question="${questionKey}" data-option="${option.label}"
+                                ${isChecked} onchange="handleAnswerChange()">
                             <label for="${optionId}">
                                 <span class="option-label">${option.label}.</span> ${option.text}
                             </label>
                         </li>
                     `;
                 });
-                
                 html += `</ul></div>`;
             });
-            
             html += `</div>`;
         });
-
         document.getElementById('survey-content').innerHTML = html;
     }
 
     function handleAnswerChange() {
         const user = state.currentUser;
         if (!user.answers) user.answers = {};
-        
         document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
             const qKey = cb.dataset.question;
             const optLabel = cb.dataset.option;
-            
             if (!user.answers[qKey]) user.answers[qKey] = [];
-            
             if (cb.checked) {
-                if (!user.answers[qKey].includes(optLabel)) {
-                    user.answers[qKey].push(optLabel);
-                }
+                if (!user.answers[qKey].includes(optLabel)) user.answers[qKey].push(optLabel);
             } else {
                 user.answers[qKey] = user.answers[qKey].filter(a => a !== optLabel);
             }
         });
-        
         user.lastModified = new Date().toISOString();
         updateProgress();
-        
         clearTimeout(window.autoSaveTimeout);
-        window.autoSaveTimeout = setTimeout(() => {
-            saveState();
-            showSavingIndicator();
-        }, 1000);
+        window.autoSaveTimeout = setTimeout(() => { saveState(); showSavingIndicator(); }, 1000);
     }
 
     function updateProgress() {
@@ -2104,28 +919,17 @@ function doGet(e) {
         const segment = user.segment;
         const data = surveyData[segment];
         const answers = user.answers || {};
-        
-        let totalQuestions = 0;
-        let answeredQuestions = 0;
-        
+        let totalQuestions = 0, answeredQuestions = 0;
         data.sections.forEach(section => {
             section.questions.forEach(question => {
                 totalQuestions++;
-                if (answers[question.id] && answers[question.id].length > 0) {
-                    answeredQuestions++;
-                }
+                if (answers[question.id] && answers[question.id].length > 0) answeredQuestions++;
             });
         });
-        
         const percent = totalQuestions > 0 ? Math.round((answeredQuestions / totalQuestions) * 100) : 0;
-        
         document.getElementById('progress-fill').style.width = percent + '%';
-        document.getElementById('progress-label').textContent = `Progress: ${percent}% (${answeredQuestions}/${totalQuestions} pertanyaan dijawab)`;
+        document.getElementById('progress-label').textContent = `Progress: ${percent}% (${answeredQuestions}/${totalQuestions} pertanyaan)`;
     }
-
-    // ============================================
-    // SAVE & SUBMIT
-    // ============================================
 
     function saveProgress() {
         handleAnswerChange();
@@ -2138,24 +942,17 @@ function doGet(e) {
         const segment = user.segment;
         const data = surveyData[segment];
         const answers = user.answers || {};
-        
-        let totalQuestions = 0;
-        let answeredQuestions = 0;
-        
+        let totalQuestions = 0, answeredQuestions = 0;
         data.sections.forEach(section => {
             section.questions.forEach(question => {
                 totalQuestions++;
-                if (answers[question.id] && answers[question.id].length > 0) {
-                    answeredQuestions++;
-                }
+                if (answers[question.id] && answers[question.id].length > 0) answeredQuestions++;
             });
         });
-        
         if (answeredQuestions < totalQuestions) {
             showModal(`
                 <h3>⚠️ Survey Belum Selesai</h3>
-                <p class="mb-4">Anda baru menjawab <strong>${answeredQuestions}</strong> dari <strong>${totalQuestions}</strong> pertanyaan (${Math.round(answeredQuestions/totalQuestions*100)}%).</p>
-                <p class="mb-4">Apakah Anda yakin ingin mengirim survey ini?</p>
+                <p class="mb-4">Anda baru menjawab <strong>${answeredQuestions}</strong> dari <strong>${totalQuestions}</strong> pertanyaan.</p>
                 <div class="btn-group">
                     <button class="btn btn-success" onclick="confirmSubmit()">Ya, Kirim Sekarang</button>
                     <button class="btn btn-secondary" onclick="closeModal()">Lanjutkan Mengisi</button>
@@ -2168,25 +965,12 @@ function doGet(e) {
 
     function confirmSubmit() {
         closeModal();
-        
         const user = state.currentUser;
         user.status = 'completed';
         user.submittedAt = new Date().toISOString();
         user.lastModified = new Date().toISOString();
-        
         saveState();
         sendToGoogleDrive(user);
-        
-        showModal(`
-            <h3>✅ Survey Berhasil Dikirim!</h3>
-            <p class="mb-4">Terima kasih, <strong>${user.name}</strong>. Survey Segmen ${user.segment} Anda telah berhasil disimpan dan dikirim.</p>
-            <div class="alert alert-success">
-                Data Anda akan tersinkronisasi ke Google Drive secara otomatis jika koneksi tersedia.
-            </div>
-            <div class="btn-group" style="justify-content:center;">
-                <button class="btn btn-primary" onclick="finishSurvey()">Selesai</button>
-            </div>
-        `);
     }
 
     function finishSurvey() {
@@ -2198,28 +982,72 @@ function doGet(e) {
 
     function sendToGoogleDrive(user) {
         if (!state.gdriveUrl) {
-            console.log('Google Drive URL not configured. Data saved locally only.');
+            showAlert('Error: URL server tidak ditemukan. Hubungi admin.', 'danger');
             return;
         }
-
         const payload = {
             name: user.name,
             segment: user.segment,
             answers: user.answers,
-            submittedAt: user.submittedAt || new Date().toISOString()
+            submittedAt: new Date().toISOString(),
+            status: 'completed'
         };
-
+        var submitBtn = document.querySelector('button[onclick="submitSurvey()"]');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '⏳ Mengirim data...';
+        }
         fetch(state.gdriveUrl, {
             method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
-        }).then(() => {
-            console.log('Data sent to Google Drive successfully');
-        }).catch(err => {
-            console.error('Failed to send to Google Drive:', err);
+        })
+        .then(function(response) { return response.json(); })
+        .then(function(data) {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '✅ Kirim & Selesai';
+            }
+            if (data.status === 'success') {
+                user.status = 'completed';
+                user.submittedAt = new Date().toISOString();
+                user.syncedToDrive = true;
+                user.alreadySubmitted = true;
+                saveState();
+                showModal(`
+                    <h3>✅ Survey Berhasil Dikirim!</h3>
+                    <p class="mb-4">Terima kasih, <strong>${user.name}</strong>.</p>
+                    <div class="alert alert-success">
+                        Survey Segmen ${user.segment} Anda telah tersimpan.<br>
+                        <strong>Survey hanya boleh diisi sekali.</strong>
+                    </div>
+                    <div class="btn-group" style="justify-content:center;">
+                        <button class="btn btn-primary" onclick="finishSurvey()">Selesai</button>
+                    </div>
+                `);
+            } else if (data.status === 'duplicate') {
+                showModal(`
+                    <h3>⚠️ Anda Sudah Mengisi Survey</h3>
+                    <p class="mb-4">Maaf, <strong>${user.name}</strong>, Anda sudah mengisi survey ini sebelumnya.</p>
+                    <div class="alert alert-warning">
+                        ${data.message}<br><br>
+                        Survey hanya dapat diisi <strong>1 kali</strong>.
+                    </div>
+                    <div class="btn-group" style="justify-content:center;">
+                        <button class="btn btn-secondary" onclick="closeModal(); finishSurvey()">Kembali</button>
+                    </div>
+                `);
+            } else {
+                showAlert('Terjadi kesalahan: ' + data.message, 'danger');
+            }
+        })
+        .catch(function(error) {
+            console.error('Error:', error);
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '✅ Kirim & Selesai';
+            }
+            showAlert('Koneksi terganggu. Silakan coba lagi.', 'danger');
         });
     }
 
@@ -2230,26 +1058,15 @@ function doGet(e) {
     function addRespondent() {
         const name = document.getElementById('new-respondent-name').value.trim();
         const segment = document.getElementById('new-respondent-segment').value;
-        
-        if (!name) {
-            showAlert('Nama responden tidak boleh kosong.', 'warning');
-            return;
-        }
-        
+        if (!name) { showAlert('Nama responden tidak boleh kosong.', 'warning'); return; }
         if (state.respondents.find(r => r.name.toLowerCase() === name.toLowerCase())) {
             showAlert('Responden dengan nama ini sudah ada.', 'warning');
             return;
         }
-        
         state.respondents.push({
-            name: name,
-            segment: segment,
-            status: 'new',
-            answers: {},
-            createdAt: new Date().toISOString(),
-            lastModified: new Date().toISOString()
+            name: name, segment: segment, status: 'new', answers: {},
+            createdAt: new Date().toISOString(), lastModified: new Date().toISOString()
         });
-        
         saveState();
         renderRespondents();
         document.getElementById('new-respondent-name').value = '';
@@ -2258,20 +1075,15 @@ function doGet(e) {
 
     function renderRespondents() {
         const tbody = document.getElementById('respondents-tbody');
-        
         if (state.respondents.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:var(--gray-500);">Belum ada responden terdaftar.</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="4" style="text-align:center; color:var(--gray-500);">Belum ada responden.</td></tr>';
             return;
         }
-        
         let html = '';
         state.respondents.forEach((r, idx) => {
-            const statusBadge = r.status === 'completed' 
-                ? '<span class="badge badge-complete">✅ Selesai</span>'
-                : Object.keys(r.answers || {}).length > 0 
-                    ? '<span class="badge badge-progress">🔄 Dalam Progress</span>'
-                    : '<span class="badge badge-new">⏳ Belum Mulai</span>';
-            
+            const statusBadge = r.status === 'completed' ? '<span class="badge badge-complete">✅ Selesai</span>' :
+                Object.keys(r.answers || {}).length > 0 ? '<span class="badge badge-progress">🔄 Progress</span>' :
+                '<span class="badge badge-new">⏳ Belum Mulai</span>';
             html += `
                 <tr>
                     <td><strong>${r.name}</strong></td>
@@ -2284,7 +1096,6 @@ function doGet(e) {
                 </tr>
             `;
         });
-        
         tbody.innerHTML = html;
     }
 
@@ -2292,11 +1103,8 @@ function doGet(e) {
         const r = state.respondents[idx];
         const data = surveyData[r.segment];
         const answers = r.answers || {};
-        
         let html = `<h3>📋 Hasil Survey: ${r.name}</h3>`;
-        html += `<p class="mb-2"><span class="badge badge-segment-${r.segment.toLowerCase()}">Segmen ${r.segment}</span> — Status: ${r.status === 'completed' ? '✅ Selesai' : '🔄 Dalam Progress'}</p>`;
-        html += `<hr style="margin:16px 0;">`;
-        
+        html += `<p class="mb-2"><span class="badge badge-segment-${r.segment.toLowerCase()}">Segmen ${r.segment}</span> — Status: ${r.status === 'completed' ? '✅ Selesai' : '🔄 Progress'}</p><hr style="margin:16px 0;">`;
         if (Object.keys(answers).length === 0) {
             html += `<p style="color:var(--gray-500);">Belum ada jawaban.</p>`;
         } else {
@@ -2306,28 +1114,19 @@ function doGet(e) {
                     const qAnswers = answers[question.id] || [];
                     html += `<div style="margin:8px 0; padding:8px; background:var(--gray-50); border-radius:6px;">`;
                     html += `<strong style="font-size:0.9em;">${question.id}:</strong> `;
-                    if (qAnswers.length > 0) {
-                        html += `<span style="color:var(--secondary); font-weight:600;">${qAnswers.join(', ')}</span>`;
-                    } else {
-                        html += `<span style="color:var(--gray-500); font-style:italic;">Tidak dijawab</span>`;
-                    }
+                    html += qAnswers.length > 0 ? `<span style="color:var(--secondary); font-weight:600;">${qAnswers.join(', ')}</span>` :
+                        `<span style="color:var(--gray-500); font-style:italic;">Tidak dijawab</span>`;
                     html += `</div>`;
                 });
             });
         }
-        
-        html += `
-            <div class="btn-group" style="justify-content:flex-end; margin-top:20px;">
-                <button class="btn btn-secondary" onclick="closeModal()">Tutup</button>
-            </div>
-        `;
-        
+        html += `<div class="btn-group" style="justify-content:flex-end; margin-top:20px;"><button class="btn btn-secondary" onclick="closeModal()">Tutup</button></div>`;
         showModal(html);
     }
 
     function deleteRespondent(idx) {
         const r = state.respondents[idx];
-        if (confirm(`Hapus responden "${r.name}"? Data survey akan hilang permanen.`)) {
+        if (confirm(`Hapus responden "${r.name}"? Data akan hilang permanen.`)) {
             state.respondents.splice(idx, 1);
             saveState();
             renderRespondents();
@@ -2337,27 +1136,18 @@ function doGet(e) {
     function renderResults() {
         const filter = document.getElementById('filter-segment').value;
         const container = document.getElementById('results-container');
-        
         let filtered = state.respondents.filter(r => r.status === 'completed');
-        if (filter !== 'all') {
-            filtered = filtered.filter(r => r.segment === filter);
-        }
-        
+        if (filter !== 'all') filtered = filtered.filter(r => r.segment === filter);
         if (filtered.length === 0) {
-            container.innerHTML = '<p class="text-center" style="color:var(--gray-500);">Belum ada hasil survey yang selesai untuk segmen ini.</p>';
+            container.innerHTML = '<p class="text-center" style="color:var(--gray-500);">Belum ada hasil survey.</p>';
             return;
         }
-        
         let html = `<p class="mb-4"><strong>${filtered.length}</strong> responden telah menyelesaikan survey.</p>`;
-        
         filtered.forEach(r => {
             html += `
                 <div class="survey-section" style="margin-bottom:16px;">
                     <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-                        <div>
-                            <strong>${r.name}</strong>
-                            <span class="badge badge-segment-${r.segment.toLowerCase()}">Segmen ${r.segment}</span>
-                        </div>
+                        <div><strong>${r.name}</strong> <span class="badge badge-segment-${r.segment.toLowerCase()}">Segmen ${r.segment}</span></div>
                         <small style="color:var(--gray-500);">Dikirim: ${new Date(r.submittedAt).toLocaleString('id-ID')}</small>
                     </div>
                     <div class="mt-2">
@@ -2366,7 +1156,6 @@ function doGet(e) {
                 </div>
             `;
         });
-        
         container.innerHTML = html;
     }
 
@@ -2403,7 +1192,6 @@ function doGet(e) {
         alertDiv.style.width = '90%';
         alertDiv.textContent = message;
         document.body.appendChild(alertDiv);
-        
         setTimeout(() => {
             alertDiv.style.opacity = '0';
             alertDiv.style.transition = 'opacity 0.3s';
@@ -2435,7 +1223,6 @@ function doGet(e) {
     // ============================================
 
     loadState();
-    
     if (state.currentUser && !state.isAdmin) {
         startSurvey();
     } else if (state.isAdmin) {
@@ -2451,7 +1238,6 @@ function doGet(e) {
             saveState();
         }
     }, 30000);
-
     </script>
 </body>
 </html>
